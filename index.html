@@ -1,0 +1,1751 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Story of the Bean: Economics Lens</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      --asu-maroon: #8c1d40;
+      --asu-gold: #ffc627;
+      --asu-black: #191919;
+      --asu-gray-2: #484848;
+      --asu-gray: #747474;
+      --asu-gray-4: #bfbfbf;
+      --asu-gray-5: #d0d0d0;
+      --asu-gray-6: #e8e8e8;
+      --asu-gray-7: #fafafa;
+      --asu-white: #ffffff;
+      --asu-green-dark: #3f6811;
+      --asu-blue-dark: #00658b;
+      --focus: #005ea8;
+      --danger: #a71930;
+      --soft-gold: #fff7dc;
+      --soft-maroon: #fbedf2;
+      --soft-green: #edf7e8;
+      --soft-blue: #eaf7fc;
+      --line: #d0d0d0;
+    }
+
+    #ecn-activity,
+    #ecn-activity * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      color: var(--asu-black);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.55;
+    }
+
+    #ecn-activity .skip-link {
+      position: absolute;
+      left: 12px;
+      top: -60px;
+      z-index: 100;
+      padding: 10px 14px;
+      border-radius: 4px;
+      background: var(--asu-gold);
+      color: var(--asu-black);
+      font-weight: 700;
+    }
+
+    #ecn-activity .skip-link:focus {
+      top: 12px;
+      outline: 3px solid var(--asu-white);
+      outline-offset: 2px;
+    }
+
+    #ecn-activity .course-header {
+      border-bottom: 8px solid var(--asu-gold);
+      background: var(--asu-maroon);
+      color: var(--asu-white);
+    }
+
+    #ecn-activity .header-inner,
+    #ecn-activity main {
+      width: min(1160px, 100%);
+      margin: 0 auto;
+    }
+
+    #ecn-activity .header-inner {
+      padding: 30px clamp(18px, 4vw, 48px);
+    }
+
+    #ecn-activity .eyebrow {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--asu-gold);
+      color: var(--asu-black);
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    #ecn-activity h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    #ecn-activity .course-header p:last-child {
+      max-width: 900px;
+      margin: 12px 0 0;
+      font-size: 1.05rem;
+    }
+
+    #ecn-activity main {
+      padding: 24px clamp(14px, 3vw, 32px) 52px;
+    }
+
+    #ecn-activity h2 {
+      margin: 0 0 10px;
+      color: var(--asu-maroon);
+      font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    #ecn-activity h3 {
+      margin: 22px 0 8px;
+      color: var(--asu-black);
+      font-size: 1.2rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    #ecn-activity h4 {
+      margin: 0 0 6px;
+      color: var(--asu-black);
+      font-size: 1rem;
+      letter-spacing: 0;
+    }
+
+    #ecn-activity p {
+      margin: 0 0 12px;
+    }
+
+    #ecn-activity ul {
+      margin: 0 0 14px;
+      padding-left: 24px;
+    }
+
+    #ecn-activity li + li {
+      margin-top: 6px;
+    }
+
+    #ecn-activity .print-takeaway {
+      display: none;
+    }
+
+    #ecn-activity button,
+    #ecn-activity select,
+    #ecn-activity textarea,
+    #ecn-activity input {
+      font: inherit;
+    }
+
+    #ecn-activity button,
+    #ecn-activity input[type="radio"],
+    #ecn-activity select,
+    #ecn-activity textarea {
+      scroll-margin: 90px;
+    }
+
+    #ecn-activity button:focus-visible,
+    #ecn-activity input:focus-visible,
+    #ecn-activity select:focus-visible,
+    #ecn-activity textarea:focus-visible,
+    #ecn-activity [tabindex="0"]:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    #ecn-activity .activity-intro {
+      margin-bottom: 18px;
+      padding: 18px clamp(16px, 2.4vw, 24px);
+      border: 1px solid var(--line);
+      border-left: 8px solid var(--asu-gold);
+      border-radius: 8px;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity .activity-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    #ecn-activity .scoring-note {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px solid #ead080;
+      border-radius: 6px;
+      background: var(--soft-gold);
+    }
+
+    #ecn-activity .scoring-note strong {
+      flex: 0 0 auto;
+    }
+
+    #ecn-activity .tab-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0;
+      border-bottom: 2px solid var(--line);
+    }
+
+    #ecn-activity .tab-button {
+      min-height: 44px;
+      margin: 0;
+      padding: 11px 14px;
+      border: 2px solid transparent;
+      border-bottom: 0;
+      border-radius: 8px 8px 0 0;
+      background: var(--asu-gray-6);
+      color: var(--asu-black);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #ecn-activity .tab-button[aria-selected="true"] {
+      border-color: var(--asu-maroon);
+      background: var(--asu-maroon);
+      color: var(--asu-white);
+    }
+
+    #ecn-activity .tab-button:hover {
+      filter: brightness(.96);
+    }
+
+    #ecn-activity .tab-button[hidden] {
+      display: none;
+    }
+
+    #ecn-activity .tab-panel {
+      padding: clamp(18px, 2.5vw, 28px);
+      border: 2px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity .tab-panel[hidden] {
+      display: none;
+    }
+
+    #ecn-activity .reading-width {
+      max-width: 900px;
+    }
+
+    #ecn-activity .callout,
+    #ecn-activity .ai-note,
+    #ecn-activity .evidence-note {
+      margin: 16px 0;
+      padding: 14px;
+      border-radius: 8px;
+    }
+
+    #ecn-activity .callout {
+      border: 1px solid #ead080;
+      border-left: 7px solid var(--asu-gold);
+      background: var(--soft-gold);
+    }
+
+    #ecn-activity .ai-note {
+      border: 1px solid #9fd5e9;
+      border-left: 7px solid var(--asu-blue-dark);
+      background: var(--soft-blue);
+    }
+
+    #ecn-activity .evidence-note {
+      border: 1px solid #d8a6b7;
+      border-left: 7px solid var(--asu-maroon);
+      background: var(--soft-maroon);
+    }
+
+    #ecn-activity .artifact-heading {
+      padding-top: 12px;
+      border-top: 5px solid var(--asu-gold);
+    }
+
+    #ecn-activity .table-wrap {
+      width: 100%;
+      margin: 12px 0 18px;
+      overflow-x: auto;
+    }
+
+    #ecn-activity table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity th,
+    #ecn-activity td {
+      padding: 10px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    #ecn-activity th {
+      background: #f0f2f5;
+      color: var(--asu-black);
+    }
+
+    #ecn-activity .option-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin: 14px 0 20px;
+    }
+
+    #ecn-activity .option-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--asu-maroon);
+      border-radius: 8px;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity .option-card h3 {
+      margin-top: 0;
+      color: var(--asu-maroon);
+      font-size: 1.1rem;
+    }
+
+    #ecn-activity .option-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    #ecn-activity .research-list {
+      margin: 12px 0 24px;
+      padding-left: 28px;
+    }
+
+    #ecn-activity .research-list li {
+      padding: 10px 0 12px 4px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    #ecn-activity .research-list li::marker {
+      color: var(--asu-maroon);
+      font-size: 1.15em;
+    }
+
+    #ecn-activity .research-list strong {
+      color: var(--asu-maroon);
+    }
+
+    #ecn-activity .market-explorer {
+      margin: 18px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--asu-gray-7);
+    }
+
+    #ecn-activity .scenario-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    #ecn-activity .scenario-button,
+    #ecn-activity .both-size-button,
+    #ecn-activity .secondary-button {
+      min-height: 44px;
+      margin: 0;
+      padding: 10px 14px;
+      border: 2px solid var(--asu-gray-2);
+      border-radius: 6px;
+      background: var(--asu-white);
+      color: var(--asu-black);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #ecn-activity .scenario-button[aria-pressed="true"],
+    #ecn-activity .both-size-button[aria-pressed="true"] {
+      border-color: var(--asu-maroon);
+      background: var(--asu-maroon);
+      color: var(--asu-white);
+    }
+
+    #ecn-activity .both-shock-controls {
+      margin: 14px 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--asu-blue-dark);
+      border-radius: 6px;
+      background: var(--soft-blue);
+    }
+
+    #ecn-activity .both-shock-controls p {
+      margin-bottom: 8px;
+    }
+
+    #ecn-activity .chart-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    #ecn-activity .market-chart {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity .chart-axis {
+      stroke: var(--asu-black);
+      stroke-width: 3;
+    }
+
+    #ecn-activity .chart-baseline {
+      fill: none;
+      stroke: var(--asu-gray-4);
+      stroke-width: 4;
+      stroke-dasharray: 9 7;
+    }
+
+    #ecn-activity .chart-supply {
+      fill: none;
+      stroke: var(--asu-maroon);
+      stroke-width: 6;
+    }
+
+    #ecn-activity .chart-demand {
+      fill: none;
+      stroke: var(--asu-blue-dark);
+      stroke-width: 6;
+    }
+
+    #ecn-activity .equilibrium-point {
+      fill: var(--asu-gold);
+      stroke: var(--asu-black);
+      stroke-width: 3;
+      transition: cx .25s ease, cy .25s ease;
+    }
+
+    #ecn-activity .chart-label {
+      fill: var(--asu-black);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    #ecn-activity .chart-line-label {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    #ecn-activity .supply-label {
+      fill: var(--asu-maroon);
+    }
+
+    #ecn-activity .demand-label {
+      fill: var(--asu-blue-dark);
+    }
+
+    #ecn-activity .market-summary {
+      margin-top: 12px;
+      padding: 12px;
+      border-left: 6px solid var(--asu-gold);
+      border-radius: 6px;
+      background: var(--soft-gold);
+    }
+
+    #ecn-activity .progress-block {
+      margin: 0 0 22px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--asu-gray-7);
+    }
+
+    #ecn-activity progress {
+      width: 100%;
+      height: 18px;
+      accent-color: var(--asu-maroon);
+    }
+
+    #ecn-activity .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    #ecn-activity .controls button {
+      margin: 0;
+    }
+
+    #ecn-activity .question-card {
+      margin: 18px 0;
+      padding: 16px;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity .question-card h3 {
+      margin-top: 0;
+      font-size: 1.15rem;
+    }
+
+    #ecn-activity fieldset {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    #ecn-activity legend,
+    #ecn-activity label {
+      color: var(--asu-black);
+      font-weight: 700;
+    }
+
+    #ecn-activity .choice-row {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      min-height: 44px;
+      margin: 9px 0;
+      padding: 11px;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      background: var(--asu-white);
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    #ecn-activity .choice-row:has(input:checked) {
+      border-color: var(--asu-maroon);
+      background: var(--soft-maroon);
+    }
+
+    #ecn-activity .choice-row input {
+      width: 20px;
+      height: 20px;
+      margin: 3px 0 0;
+      accent-color: var(--asu-maroon);
+    }
+
+    #ecn-activity .primary-button,
+    #ecn-activity .submit-button {
+      min-height: 44px;
+      margin: 10px 8px 0 0;
+      padding: 11px 16px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--asu-maroon);
+      color: var(--asu-white);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    #ecn-activity .submit-button {
+      min-height: 52px;
+      padding: 14px 20px;
+      box-shadow: 0 0 0 4px var(--asu-gold);
+      font-size: 1.05rem;
+    }
+
+    #ecn-activity button:disabled {
+      cursor: not-allowed;
+      opacity: .58;
+    }
+
+    #ecn-activity .feedback {
+      margin-top: 12px;
+      padding: 12px;
+      border-left: 7px solid var(--asu-gold);
+      border-radius: 6px;
+      background: var(--soft-gold);
+    }
+
+    #ecn-activity .feedback.correct {
+      border-left-color: var(--asu-green-dark);
+      background: var(--soft-green);
+    }
+
+    #ecn-activity .feedback.incorrect {
+      border-left-color: var(--danger);
+      background: #fff3f3;
+    }
+
+    #ecn-activity .feedback[hidden],
+    #ecn-activity .completion-controls[hidden] {
+      display: none;
+    }
+
+    #ecn-activity .error-message {
+      margin-top: 10px;
+      padding: 10px;
+      border: 2px solid var(--danger);
+      border-radius: 6px;
+      background: #fff3f3;
+      color: #3b0a0a;
+      font-weight: 700;
+    }
+
+    #ecn-activity .completion-controls {
+      margin-top: 22px;
+      padding: 16px;
+      border: 2px solid var(--asu-maroon);
+      border-radius: 8px;
+      background: var(--soft-maroon);
+    }
+
+    #ecn-activity .optional-box {
+      margin: 18px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--asu-gray-7);
+    }
+
+    #ecn-activity select,
+    #ecn-activity textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      border: 2px solid var(--asu-gray);
+      border-radius: 6px;
+      background: var(--asu-white);
+      color: var(--asu-black);
+    }
+
+    #ecn-activity textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    #ecn-activity .score-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    #ecn-activity .summary-item {
+      padding: 14px;
+      border-left: 6px solid var(--asu-gold);
+      background: var(--soft-gold);
+    }
+
+    #ecn-activity .summary-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--asu-maroon);
+      font-size: 1.2rem;
+    }
+
+    #ecn-activity .submission-status {
+      margin-top: 16px;
+      padding: 12px;
+      border-left: 7px solid var(--asu-blue-dark);
+      border-radius: 6px;
+      background: var(--soft-blue);
+    }
+
+    #ecn-activity .submission-status.success {
+      border-left-color: var(--asu-green-dark);
+      background: var(--soft-green);
+    }
+
+    #ecn-activity .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 700px) {
+      #ecn-activity .header-inner {
+        padding: 24px 18px;
+      }
+
+      #ecn-activity .tab-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #ecn-activity .tab-button {
+        border: 2px solid transparent;
+        border-radius: 6px;
+      }
+
+      #ecn-activity .tab-panel {
+        margin-top: 8px;
+        border-top: 2px solid var(--line);
+        border-radius: 8px;
+      }
+
+      #ecn-activity .scoring-note {
+        display: block;
+      }
+
+      #ecn-activity .market-chart .chart-label,
+      #ecn-activity .market-chart .chart-line-label {
+        font-size: 21px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      #ecn-activity .tab-list {
+        grid-template-columns: 1fr;
+      }
+
+      #ecn-activity .controls {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      #ecn-activity .scenario-buttons {
+        display: grid;
+      }
+
+      #ecn-activity .scenario-button,
+      #ecn-activity .both-size-button,
+      #ecn-activity .primary-button,
+      #ecn-activity .secondary-button,
+      #ecn-activity .submit-button {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      #ecn-activity *,
+      #ecn-activity *::before,
+      #ecn-activity *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    @media print {
+      @page {
+        margin: .65in;
+      }
+
+      #ecn-activity .skip-link,
+      #ecn-activity .course-header,
+      #ecn-activity main {
+        display: none !important;
+      }
+
+      body {
+        background: var(--asu-white);
+      }
+
+      #ecn-activity .print-takeaway {
+        display: block;
+        color: var(--asu-black);
+        font-size: 11pt;
+      }
+
+      #ecn-activity .print-takeaway h1 {
+        padding-bottom: 10px;
+        border-bottom: 4px solid var(--asu-gold);
+        color: var(--asu-maroon);
+        font-size: 24pt;
+      }
+
+      #ecn-activity .print-takeaway h2 {
+        margin-top: 22px;
+        color: var(--asu-maroon);
+        font-size: 15pt;
+      }
+
+      #ecn-activity .print-summary {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin: 18px 0;
+      }
+
+      #ecn-activity .print-summary div {
+        padding: 10px;
+        border: 1px solid var(--asu-gray-4);
+      }
+
+      #ecn-activity .print-summary strong {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      #ecn-activity .print-results {
+        columns: 2;
+        column-gap: 28px;
+      }
+
+      #ecn-activity .print-results li {
+        break-inside: avoid;
+        margin-bottom: 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="ecn-activity">
+    <a class="skip-link" href="#ecn-main">Skip to main content</a>
+
+    <header class="course-header">
+      <div class="header-inner">
+        <p class="eyebrow">WPC 150 Case Segment</p>
+        <h1>The Story of the Bean: Economics Lens</h1>
+        <p>Examine Copper Cup's pricing question when a smaller harvest meets stronger customer demand.</p>
+      </div>
+    </header>
+
+    <main id="ecn-main">
+      <section class="activity-intro" aria-labelledby="activity-heading">
+        <h2 id="activity-heading">How This Chapter Works</h2>
+        <p>Read the case tabs, explore the market model, and then complete all 10 practice checks. Each check provides immediate feedback and can be revised before submission.</p>
+        <div class="scoring-note">
+          <strong>Canvas scoring:</strong>
+          <span>Your score is based on 10 objective decisions worth 10 points each. Your pricing recommendation and reflection note are optional and are not scored. After all checks are complete, use the required final button to submit your score to Canvas.</span>
+        </div>
+      </section>
+
+      <nav class="tab-list" role="tablist" aria-label="Economics case sections">
+        <button class="tab-button" id="tab-handoff" type="button" role="tab" aria-selected="true" aria-controls="panel-handoff">Case Context</button>
+        <button class="tab-button" id="tab-narrative" type="button" role="tab" aria-selected="false" aria-controls="panel-narrative" tabindex="-1">ECN Narrative</button>
+        <button class="tab-button" id="tab-markets" type="button" role="tab" aria-selected="false" aria-controls="panel-markets" tabindex="-1">Markets in Motion</button>
+        <button class="tab-button" id="tab-action" type="button" role="tab" aria-selected="false" aria-controls="panel-action" tabindex="-1">Economics in Action</button>
+        <button class="tab-button" id="tab-decision" type="button" role="tab" aria-selected="false" aria-controls="panel-decision" tabindex="-1">Pricing Decision</button>
+        <button class="tab-button" id="tab-practice" type="button" role="tab" aria-selected="false" aria-controls="panel-practice" tabindex="-1">Practice</button>
+        <button class="tab-button" id="tab-submit" type="button" role="tab" aria-selected="false" aria-controls="panel-submit" tabindex="-1" hidden>Submit</button>
+      </nav>
+
+      <article class="tab-panel" id="panel-handoff" role="tabpanel" tabindex="0" aria-labelledby="tab-handoff">
+        <h2>Case Context</h2>
+        <p>Copper Cup is evaluating a limited direct cooperative pilot called <strong>The Story of the Bean</strong>. The draft plan would pay a premium, fund a basic traceability page, and introduce a featured latte at a planned price of $5.45. Copper Cup would describe the proposed relationship and the evidence it can verify without claiming that one purchase solves every social or environmental problem in coffee.</p>
+        <p>Three months later, just as the launch menu is being finalized, Elena receives two messages.</p>
+        <div class="evidence-note">
+          <h3>Message 1: Cooperative Update</h3>
+          <p>Heavy rain during harvest and drying reduced the amount of coffee that met the quality target. The cooperative can still supply the pilot, but fewer bags are available and the quoted price is higher.</p>
+        </div>
+        <div class="evidence-note">
+          <h3>Message 2: Customer Interest</h3>
+          <p>A local food creator posts about the hidden journey behind everyday products. Copper Cup's customer questions and advance interest in traceable coffee increase almost overnight.</p>
+        </div>
+        <p>Elena looks at the two messages and asks Maya, “How can the same coffee become harder to get at exactly the moment more people want it?”</p>
+        <p>Maya recognizes that Copper Cup needs an economics analysis before choosing its pricing response.</p>
+        <div class="callout">
+          <p><strong>Economics decision:</strong> How should Copper Cup respond when supply tightens, demand rises, and both the business and its customers face scarcity?</p>
+        </div>
+        <div class="ai-note">
+          <h3>AI at Work: Framing the Market Change</h3>
+          <p>Maya could use AI to sort news into possible supply and demand events or draft an initial forecast. The useful output is a hypothesis to test. AI may overlook timing, assume all customers respond alike, or sound certain when the model cannot determine an exact result.</p>
+        </div>
+      </article>
+
+      <article class="tab-panel" id="panel-narrative" role="tabpanel" tabindex="0" aria-labelledby="tab-narrative" hidden>
+        <h2>Economics: When the Bean Becomes a Price</h2>
+        <p>Maya begins with the definition from her Economics module: economics is the study of choice in the presence of scarcity. Scarcity does not mean that coffee has disappeared. It means Copper Cup cannot have unlimited high-quality beans, unlimited roasting time, unlimited cash, unlimited employee attention, and unlimited customer spending power.</p>
+        <p>The cooperative has fewer qualifying beans. Copper Cup has only so much cash available before launch. The roaster has limited capacity. Students near campus have limited budgets. Every possible response uses a scarce resource and gives something else up.</p>
+        <p>Elena could keep the drink price low, but Copper Cup would absorb more cost and have less cash for other operations. She could raise the price, but some students might buy less often or choose another drink. She could make the roast a limited release, but fewer customers would experience the product. She could blend the coffee with another origin, but the relationship between the product and the cooperative would become less clear.</p>
+        <p>Those are opportunity costs. The opportunity cost of a choice is the next-best alternative given up. It may not appear on an invoice. Keeping the price unchanged has an accounting cost because Copper Cup earns less margin, but it also has opportunity costs: money used to absorb the higher bean cost cannot be used for employee hours, equipment maintenance, or another product.</p>
+        <p>Before drawing the curves, Maya defines one market clearly: <strong>Copper Cup's launch-week market for the Story of the Bean latte</strong>. Price means the menu price per latte, and quantity means the number of featured lattes customers buy per day. This keeps the upstream market for green coffee separate from Copper Cup's downstream market for a prepared drink.</p>
+        <p>Heavy rain reduces the cooperative's qualifying harvest and raises Copper Cup's quoted bean cost. At each possible latte price, Copper Cup is now willing and able to offer fewer featured lattes per day, so the retail supply curve shifts left. The local creator's post increases the number of featured lattes customers want at each possible price, so retail demand shifts right. Both changes create upward pressure on the latte's equilibrium price.</p>
+        <p>The effect on quantity is less certain. A supply decrease tends to reduce equilibrium quantity. A demand increase tends to raise it. Without knowing the relative size of the shifts, Maya cannot honestly claim that the final quantity will definitely rise or definitely fall.</p>
+        <p>At the original planned price of $5.45, the new market conditions may create a shortage: customers want more Story of the Bean lattes than Copper Cup can profitably provide. That shortage creates upward price pressure. A higher price gives customers a reason to reconsider how much they buy and gives Copper Cup an incentive to offer more when possible. But adjustment takes time. A new coffee harvest cannot appear simply because today's menu price increased.</p>
+        <p>The model is useful because it strips the situation down to a few relationships. It is also limited. It does not decide what Copper Cup should value, whether a price is fair, or who should bear the cost of climate and market risk. Those questions require evidence and judgment.</p>
+        <p>Maya notices another complication. A market price can coordinate buyers and sellers, but it may not include every cost. If soil damage, carbon emissions, unstable farmer income, or community impacts fall on people who are not part of the transaction, economists call those third-party effects externalities. Markets can also work differently when buyers have market power, when information is incomplete, or when public policy changes incentives.</p>
+        <p>Economics therefore gives Copper Cup more than a reason to raise prices. It gives the company a disciplined way to identify tradeoffs, predict likely responses, examine assumptions, and ask who benefits, who pays, and what the market price leaves out.</p>
+      </article>
+
+      <article class="tab-panel" id="panel-markets" role="tabpanel" tabindex="0" aria-labelledby="tab-markets" hidden>
+        <div class="reading-width">
+          <h2>Markets in Motion</h2>
+          <p>The physical bean has not changed, but weather, customer preferences, costs, and available substitutes can change its market. Explore the two central shifts below.</p>
+        </div>
+
+        <section class="market-explorer" aria-labelledby="explorer-heading">
+          <h3 id="explorer-heading">Explore the Coffee Market</h3>
+          <p>This graph models Copper Cup's launch-week market for the <strong>Story of the Bean latte</strong>. Price is the menu price per latte, and quantity is featured lattes sold per day. Select a scenario to explore predicted directions of change rather than exact forecasts.</p>
+          <div class="scenario-buttons" aria-label="Market scenarios">
+            <button class="scenario-button" type="button" data-scenario="baseline" aria-pressed="true">Baseline</button>
+            <button class="scenario-button" type="button" data-scenario="rain" aria-pressed="false">Heavy Rain</button>
+            <button class="scenario-button" type="button" data-scenario="interest" aria-pressed="false">Customer Interest</button>
+            <button class="scenario-button" type="button" data-scenario="both" aria-pressed="false">Both Shocks</button>
+          </div>
+          <div class="chart-wrap">
+            <svg class="market-chart" id="market-chart" viewBox="0 0 640 400" role="img" aria-labelledby="chart-title chart-desc">
+              <title id="chart-title">Illustrative supply and demand model for the Story of the Bean latte</title>
+              <desc id="chart-desc">A solid retail supply curve slopes upward, a solid customer demand curve slopes downward, and a gold point marks their illustrative equilibrium. Dashed curves show the baseline. When both shocks are selected, controls compare how relative shift sizes can lower, preserve, or raise equilibrium quantity while price rises.</desc>
+              <defs>
+                <clipPath id="market-plot-clip">
+                  <rect x="80" y="30" width="520" height="310"></rect>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#market-plot-clip)">
+                <line class="chart-baseline" x1="160" y1="310" x2="530" y2="80"></line>
+                <line class="chart-baseline" x1="120" y1="80" x2="490" y2="310"></line>
+                <line class="chart-supply" id="supply-line" x1="160" y1="310" x2="530" y2="80" data-base-x1="160" data-base-x2="530"></line>
+                <line class="chart-demand" id="demand-line" x1="120" y1="80" x2="490" y2="310" data-base-x1="120" data-base-x2="490"></line>
+              </g>
+              <line class="chart-axis" x1="80" y1="30" x2="80" y2="340"></line>
+              <line class="chart-axis" x1="80" y1="340" x2="600" y2="340"></line>
+              <text class="chart-label" x="96" y="24">Latte price</text>
+              <text class="chart-label" x="455" y="385">Lattes per day</text>
+              <circle class="equilibrium-point" id="equilibrium-point" cx="325" cy="207.4" r="9"></circle>
+              <text class="chart-line-label supply-label" id="supply-label" x="500" y="72">Supply</text>
+              <text class="chart-line-label demand-label" id="demand-label" x="520" y="326">Demand</text>
+            </svg>
+          </div>
+          <div class="both-shock-controls" id="both-shock-controls" hidden>
+            <p><strong>Compare possible quantity outcomes:</strong> Change the relative size of the two shocks. The exact sizes are unknown, so more than one quantity result is possible.</p>
+            <div class="scenario-buttons" aria-label="Relative sizes of the supply and demand shocks">
+              <button class="both-size-button" type="button" data-both-variant="supplyLarger" aria-pressed="false">Supply Shock Larger</button>
+              <button class="both-size-button" type="button" data-both-variant="equal" aria-pressed="true">Equal-Sized Shifts</button>
+              <button class="both-size-button" type="button" data-both-variant="demandLarger" aria-pressed="false">Demand Shock Larger</button>
+            </div>
+          </div>
+          <div class="market-summary" id="market-summary" role="status" aria-live="polite">
+            <strong>Baseline:</strong> Supply and demand meet at an illustrative equilibrium price and quantity.
+          </div>
+        </section>
+
+        <h3 class="artifact-heading">Artifact: Supply and Demand Event Cards</h3>
+        <div class="table-wrap" role="region" aria-label="Supply and demand event cards" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Market Event</th>
+                <th scope="col">Primary Lens</th>
+                <th scope="col">Likely Effect</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Heavy rain reduces the cooperative's qualifying harvest and raises Copper Cup's bean cost.</td>
+                <td>Supply</td>
+                <td>Retail supply shifts left because Copper Cup can profitably offer fewer featured lattes at each menu price.</td>
+              </tr>
+              <tr>
+                <td>A local creator increases interest in traceable coffee.</td>
+                <td>Demand</td>
+                <td>Retail demand shifts right because more customers want the featured latte at each menu price.</td>
+              </tr>
+              <tr>
+                <td>Shipping rates rise during peak import season.</td>
+                <td>Supply and cost</td>
+                <td>Higher input costs can reduce the amount sellers are willing to provide at the current price.</td>
+              </tr>
+              <tr>
+                <td>A nearby cafe launches a cheaper substitute.</td>
+                <td>Demand and competition</td>
+                <td>Demand for Copper Cup may soften if customers view the products as substitutes.</td>
+              </tr>
+              <tr>
+                <td>Student budgets tighten near the end of the semester.</td>
+                <td>Demand</td>
+                <td>Demand for premium drinks may fall as customers become more price sensitive.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="tab-panel" id="panel-action" role="tabpanel" tabindex="0" aria-labelledby="tab-action" hidden>
+        <div class="reading-width">
+          <h2>Economics in Action</h2>
+          <p>Maya learns that economists do not study only prices. They use models, data, forecasting, and careful communication to understand choices made by households, businesses, and governments.</p>
+        </div>
+
+        <ul class="research-list reading-width">
+          <li><strong>Prices, Inflation, and Labor:</strong> Bart Hobijn's work connects price setting, inflation, labor markets, and macroeconomic data. Copper Cup should distinguish a product-specific coffee shock from broader inflation affecting wages, rent, shipping, and student budgets.</li>
+          <li><strong>Incentives and Work:</strong> Alexander Bick's research examines how policies and incentives affect decisions about work. Copper Cup can ask how wages, schedules, taxes, and the cost of living influence both employees and customers.</li>
+          <li><strong>Climate and Policy:</strong> Stephie Fried studies how climate change and expected climate policies influence decisions today. The cooperative and Copper Cup may respond before a policy arrives because future weather, regulation, and costs already shape risk.</li>
+          <li><strong>Trade and Development:</strong> Wyatt Brooks connects international trade with economic development. Coffee moves through global trade, but the benefits and risks of that trade may be distributed differently across producers, intermediaries, businesses, and consumers.</li>
+          <li><strong>Externalities and Social Costs:</strong> Alejandro Manelli and Kelly Bishop emphasize third-party effects and environmental questions. A market price may omit costs borne by communities, workers, or the environment.</li>
+          <li><strong>Human Capital and Opportunity:</strong> Esteban Aucejo studies education, skills, and labor-market outcomes. Maya sees that economics can connect individual investments in knowledge with later choices, productivity, wages, and opportunity.</li>
+        </ul>
+
+        <h3 class="artifact-heading">Artifact: Maya's Economist's Toolkit</h3>
+        <div class="table-wrap" role="region" aria-label="Maya's economist's toolkit" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Economics Tool</th>
+                <th scope="col">Copper Cup Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>What must be given up?</td>
+                <td>Opportunity cost</td>
+                <td>Compare margin, affordability, reach, sourcing integrity, and alternative uses of cash.</td>
+              </tr>
+              <tr>
+                <td>Why is price under pressure?</td>
+                <td>Supply and demand</td>
+                <td>Separate weather, shipping, customer interest, substitutes, and budget changes.</td>
+              </tr>
+              <tr>
+                <td>What is happening beyond this product?</td>
+                <td>Macroeconomic indicators</td>
+                <td>Watch inflation, labor-market conditions, productivity, interest rates, and the business cycle.</td>
+              </tr>
+              <tr>
+                <td>What does the price leave out?</td>
+                <td>Externalities and market conditions</td>
+                <td>Examine environmental costs, information gaps, bargaining power, and effects on third parties.</td>
+              </tr>
+              <tr>
+                <td>How strong is the conclusion?</td>
+                <td>Data, econometrics, and forecasting</td>
+                <td>State assumptions, distinguish correlation from causation, and communicate uncertainty.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ai-note reading-width">
+          <h3>AI at Work: Reading Economic Signals</h3>
+          <p>AI could summarize market updates, compare indicators, or generate possible scenarios. Maya still has to identify whether the data describe Copper Cup, the local market, or the broader economy; check the source and date; and reject conclusions that are more precise than the evidence allows.</p>
+        </div>
+        <div class="callout reading-width">
+          <p><strong>Explore the major:</strong> Visit the <a href="https://wpcarey.asu.edu/economics-degrees/undergraduate" target="_blank" rel="noopener">undergraduate economics program</a> to compare ASU economics pathways, degree experiences, and next steps.</p>
+        </div>
+      </article>
+
+      <article class="tab-panel" id="panel-decision" role="tabpanel" tabindex="0" aria-labelledby="tab-decision" hidden>
+        <div class="reading-width">
+          <h2>Economics Decision Point</h2>
+          <p>Copper Cup must set the launch price before the final order is placed. Each option changes incentives, access, and who absorbs the higher cost.</p>
+        </div>
+
+        <h3 class="artifact-heading">Artifact: What Changed Before Launch</h3>
+        <p>The table compares Copper Cup's original launch plan with Maya's updated estimates after heavy rain reduced the available coffee and customer interest increased. These changes are why Elena must reconsider the latte's price.</p>
+        <div class="table-wrap" role="region" aria-label="Comparison of Copper Cup's original launch plan and updated estimates" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Evidence for the Decision</th>
+                <th scope="col">Original Launch Plan</th>
+                <th scope="col">After Heavy Rain and Increased Interest</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Menu price under consideration</td>
+                <td>$5.45 per latte</td>
+                <td>Keep $5.45 or consider raising the price to $5.95</td>
+              </tr>
+              <tr>
+                <td>Estimated variable cost per latte</td>
+                <td>$2.60</td>
+                <td>$3.10 because of the higher bean quote</td>
+              </tr>
+              <tr>
+                <td>Contribution margin if the price stays at $5.45</td>
+                <td>$2.85 per latte</td>
+                <td>$2.35 per latte</td>
+              </tr>
+              <tr>
+                <td>Maximum latte supply</td>
+                <td>About 80 per day</td>
+                <td>About 60 per day because less qualifying coffee is available</td>
+              </tr>
+              <tr>
+                <td>Estimated customer demand at $5.45</td>
+                <td>About 50-60 per day</td>
+                <td>Advance interest suggests about 70-80 per day</td>
+              </tr>
+              <tr>
+                <td>Lower-price way to try the coffee</td>
+                <td>Not included in the original plan</td>
+                <td>Possible $3.25 small drip, with a $2.35 variable cost and $0.90 contribution margin</td>
+              </tr>
+              <tr>
+                <td>What Maya still does not know</td>
+                <td>Customer demand had not yet been tested</td>
+                <td>How many customers would buy the latte at $5.95</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Planning note:</strong> These are decision estimates, not guaranteed outcomes. Maya will compare them with actual sales, stockouts, and customer responses during the pilot.</p>
+
+        <div class="option-grid">
+          <section class="option-card">
+            <h3>Option A: Raise the Featured Price</h3>
+            <p><strong>Offer:</strong> Raise the latte from $5.45 to $5.95 and offer up to 60 per day.</p>
+            <p><strong>Business upside:</strong> Restores the estimated $2.85 contribution margin per latte.</p>
+            <p><strong>Business risk:</strong> Customer response at $5.95 is unknown, and some customers may buy less or feel excluded.</p>
+            <p><strong>Social question:</strong> Who is left out when responsibility is built into a premium price?</p>
+          </section>
+          <section class="option-card">
+            <h3>Option B: Keep the Price Unchanged</h3>
+            <p><strong>Offer:</strong> Keep the latte at $5.45 and offer up to 60 per day.</p>
+            <p><strong>Business upside:</strong> Protects affordability and customer goodwill.</p>
+            <p><strong>Business risk:</strong> Margin falls to an estimated $2.35 per latte, and demand may exceed the daily supply.</p>
+            <p><strong>Social question:</strong> If customers do not pay the added cost, who does?</p>
+          </section>
+          <section class="option-card">
+            <h3>Option C: Use Tiered Access</h3>
+            <p><strong>Offer:</strong> Allocate the limited beans to as many as 45 lattes at $5.95 and 15 small drip coffees at $3.25 per day.</p>
+            <p><strong>Business upside:</strong> Preserves a lower-price way to experience the cooperative coffee.</p>
+            <p><strong>Business risk:</strong> Adds batch, inventory, and communication complexity while reducing margin on the lower-price servings.</p>
+            <p><strong>Social question:</strong> Can Copper Cup widen access without hiding the product's true cost?</p>
+          </section>
+        </div>
+
+        <div class="ai-note reading-width">
+          <h3>AI at Work: Comparing Price Options</h3>
+          <p>Maya could ask AI to compare expected margin, likely customer response, and stakeholder effects. A useful comparison must state assumptions about price sensitivity, available quantity, fixed and variable costs, and customer substitutes. The final choice remains a human business judgment.</p>
+        </div>
+
+        <div class="callout reading-width">
+          <h3>Economics Case Prompt</h3>
+          <p>Use scarcity, opportunity cost, supply, demand, incentives, and access to recommend a pricing strategy. Identify one stakeholder who benefits and one who may bear a cost.</p>
+        </div>
+      </article>
+
+      <article class="tab-panel" id="panel-practice" role="tabpanel" tabindex="0" aria-labelledby="tab-practice" hidden>
+        <h2>Interactive Practice</h2>
+        <p>Complete all 10 case decisions, then select <strong>Check My Economics Reading</strong>. You may revise and check again before submitting to Canvas.</p>
+
+        <form id="practice-form" novalidate>
+          <section class="question-card" data-question="scarcity" data-correct="limited">
+            <h3>1. Identify Scarcity</h3>
+            <fieldset>
+              <legend>Which statement best describes scarcity in Copper Cup's situation?</legend>
+              <label class="choice-row"><input type="radio" name="scarcity" value="gone"> Coffee is scarce only when the cooperative has no beans left to sell.</label>
+              <label class="choice-row"><input type="radio" name="scarcity" value="limited"> Coffee, cash, production capacity, staff attention, and customer budgets are all limited.</label>
+              <label class="choice-row"><input type="radio" name="scarcity" value="price"> Scarcity means regulations require Copper Cup to raise every featured-drink price.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="opportunity" data-correct="margin">
+            <h3>2. Find the Opportunity Cost</h3>
+            <fieldset>
+              <legend>If Copper Cup keeps the featured price unchanged, what is the clearest opportunity cost?</legend>
+              <label class="choice-row"><input type="radio" name="opportunity" value="none"> There is no opportunity cost because customers continue paying the original menu price.</label>
+              <label class="choice-row"><input type="radio" name="opportunity" value="rain"> The opportunity cost is the harvest loss caused by heavy rain at origin.</label>
+              <label class="choice-row"><input type="radio" name="opportunity" value="margin"> Copper Cup gives up margin and other possible uses of the cash it spends.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="supply" data-correct="left">
+            <h3>3. Read the Supply Shock</h3>
+            <fieldset>
+              <legend>Heavy rain reduces the cooperative's qualifying harvest. What happens in the model?</legend>
+              <label class="choice-row"><input type="radio" name="supply" value="left"> Supply shifts left.</label>
+              <label class="choice-row"><input type="radio" name="supply" value="right"> Supply shifts right.</label>
+              <label class="choice-row"><input type="radio" name="supply" value="demand"> Demand shifts left.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="demand" data-correct="right">
+            <h3>4. Read the Demand Shock</h3>
+            <fieldset>
+              <legend>A local creator increases customer interest in traceable coffee. What happens in the model?</legend>
+              <label class="choice-row"><input type="radio" name="demand" value="supply"> Supply shifts right.</label>
+              <label class="choice-row"><input type="radio" name="demand" value="left"> Demand shifts left.</label>
+              <label class="choice-row"><input type="radio" name="demand" value="right"> Demand shifts right.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="price" data-correct="up">
+            <h3>5. Predict Price Pressure</h3>
+            <fieldset>
+              <legend>When supply shifts left and demand shifts right, what is the most defensible price prediction?</legend>
+              <label class="choice-row"><input type="radio" name="price" value="down"> The equilibrium price will fall because customers face a smaller available supply.</label>
+              <label class="choice-row"><input type="radio" name="price" value="up"> Both market shifts create upward pressure on the equilibrium price.</label>
+              <label class="choice-row"><input type="radio" name="price" value="same"> The equilibrium price will remain unchanged because the two shifts cancel.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="quantity" data-correct="uncertain">
+            <h3>6. Predict Quantity</h3>
+            <fieldset>
+              <legend>What can Maya conclude about equilibrium quantity when both shifts occur?</legend>
+              <label class="choice-row"><input type="radio" name="quantity" value="rise"> Quantity must rise because stronger customer demand determines the final market outcome.</label>
+              <label class="choice-row"><input type="radio" name="quantity" value="fall"> Quantity must fall because the smaller coffee supply determines the final market outcome.</label>
+              <label class="choice-row"><input type="radio" name="quantity" value="uncertain"> Quantity remains uncertain until Maya knows the relative size of both shifts.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="shortage" data-correct="pressure">
+            <h3>7. Explain the Shortage</h3>
+            <fieldset>
+              <legend>If Copper Cup holds the original planned price of $5.45 after the shocks, what is most likely?</legend>
+              <label class="choice-row"><input type="radio" name="shortage" value="pressure"> A shortage may form, placing upward pressure on the featured coffee price.</label>
+              <label class="choice-row"><input type="radio" name="shortage" value="surplus"> A surplus may form, placing downward pressure on the featured coffee price.</label>
+              <label class="choice-row"><input type="radio" name="shortage" value="instant"> The cooperative will immediately increase its harvest enough to satisfy customer demand.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="externality" data-correct="thirdparty">
+            <h3>8. Recognize an Externality</h3>
+            <fieldset>
+              <legend>Which example best represents an externality?</legend>
+              <label class="choice-row"><input type="radio" name="externality" value="receipt"> A customer pays the listed price and receives the drink they ordered.</label>
+              <label class="choice-row"><input type="radio" name="externality" value="thirdparty"> Environmental damage affects a community without being fully included in the transaction price.</label>
+              <label class="choice-row"><input type="radio" name="externality" value="premium"> Copper Cup pays the cooperative premium stated in its purchasing agreement.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="data" data-correct="combined">
+            <h3>9. Choose Useful Economic Information</h3>
+            <fieldset>
+              <legend>Which evidence set best helps Maya separate a coffee-specific shock from the broader economy?</legend>
+              <label class="choice-row"><input type="radio" name="data" value="sales"> Copper Cup's total sales and its average transaction price for the launch.</label>
+              <label class="choice-row"><input type="radio" name="data" value="social"> One social media post and the number of likes it receives.</label>
+              <label class="choice-row"><input type="radio" name="data" value="combined"> Cooperative supply, local costs and sales, inflation, labor conditions, and customer budgets.</label>
+            </fieldset>
+          </section>
+
+          <section class="question-card" data-question="ai" data-correct="uncertainty">
+            <h3>10. Audit an AI Forecast</h3>
+            <p>Maya receives this AI-generated conclusion:</p>
+            <div class="ai-note">
+              <p>“Because demand increased and supply decreased, both the equilibrium price and quantity will definitely increase. Copper Cup should raise every menu price immediately.”</p>
+            </div>
+            <fieldset>
+              <legend>What is the strongest critique?</legend>
+              <label class="choice-row"><input type="radio" name="ai" value="uncertainty"> The conclusion overstates quantity certainty and recommends action without enough business evidence.</label>
+              <label class="choice-row"><input type="radio" name="ai" value="tone"> The conclusion uses a tone that is too formal for Copper Cup's customers.</label>
+              <label class="choice-row"><input type="radio" name="ai" value="accept"> The conclusion is reliable because it incorporates changes in both market curves.</label>
+            </fieldset>
+          </section>
+
+          <div class="optional-box">
+            <h3>Optional Take-Away Notes</h3>
+            <p><strong><em>Not scored.</em></strong> These responses stay in your browser and are included when you print or save your take-away as a PDF.</p>
+            <label for="pricing-recommendation">Which pricing path would you recommend?</label>
+            <select id="pricing-recommendation" name="pricingRecommendation">
+              <option value="">Select a path</option>
+              <option value="Raise the featured drink price">Raise the featured drink price</option>
+              <option value="Keep the featured drink price unchanged">Keep the featured drink price unchanged</option>
+              <option value="Use tiered access">Use tiered access</option>
+            </select>
+            <label for="reflection-note">Reflection note</label>
+            <textarea id="reflection-note" name="reflectionNote" placeholder="Who benefits from your choice, and who may bear a cost?"></textarea>
+          </div>
+
+          <div id="form-error" class="error-message" role="alert" tabindex="-1" hidden></div>
+          <div class="controls">
+            <button class="primary-button" id="check-practice" type="submit">Check My Economics Reading</button>
+            <button class="secondary-button" id="reset-practice" type="button">Reset</button>
+          </div>
+        </form>
+
+        <section id="practice-feedback" class="feedback" aria-live="polite" tabindex="-1" hidden>
+          <h3>Economics Feedback</h3>
+          <p id="score-line"></p>
+          <div id="feedback-list"></div>
+        </section>
+
+        <div class="completion-controls" id="completion-controls">
+          <h3>Review and Submit</h3>
+          <p id="completion-message">Complete all 10 objective checks to activate the Canvas review and submission step.</p>
+          <button class="primary-button" id="review-submit" type="button" disabled>Review and Submit to Canvas</button>
+        </div>
+      </article>
+
+      <article class="tab-panel" id="panel-submit" role="tabpanel" tabindex="0" aria-labelledby="tab-submit" hidden>
+        <div class="reading-width">
+          <h2>Required Final Step: Submit Your Score to Canvas</h2>
+          <p>Your practice checks are complete. Review the summary and then select the submission button. Your score is not sent automatically.</p>
+        </div>
+
+        <div class="score-summary" aria-label="Completion summary">
+          <div class="summary-item">
+            <strong id="final-score">0/100</strong>
+            Current objective score
+          </div>
+          <div class="summary-item">
+            <strong>10/10</strong>
+            Decisions checked
+          </div>
+          <div class="summary-item">
+            <strong>Unscored</strong>
+            Recommendation and reflection
+          </div>
+        </div>
+
+        <div class="callout reading-width">
+          <h3>Economics Takeaway</h3>
+          <p>A strong economics reading identifies scarcity, names opportunity costs, predicts market responses with appropriate uncertainty, and asks what prices and models leave out. AI can help organize scenarios, but human judgment must test assumptions, evidence, and distributional consequences.</p>
+          <p><strong>Your pricing recommendation:</strong> <span id="selected-recommendation">No pricing path selected.</span></p>
+          <p><strong>Your reflection:</strong> <span id="reflection-summary">No reflection note entered.</span></p>
+        </div>
+
+        <button class="submit-button" id="submit-score" type="button">Submit Score to Canvas</button>
+        <button class="secondary-button" id="print-takeaway-button" type="button">Print to PDF</button>
+
+        <div class="submission-status" id="submission-status" role="status" aria-live="polite">
+          Score not yet submitted.
+        </div>
+      </article>
+    </main>
+
+    <section class="print-takeaway" id="print-takeaway" aria-label="Printable economics take-away">
+      <p><strong>WPC 150</strong></p>
+      <h1>The Story of the Bean: Economics Take-Away</h1>
+
+      <div class="print-summary">
+        <div><strong id="print-score">0 out of 100</strong>Objective score</div>
+        <div><strong id="print-checked">0 of 10</strong>Decisions checked</div>
+        <div><strong id="print-submission">Not confirmed</strong>Canvas submission</div>
+      </div>
+
+      <h2>Key Takeaway</h2>
+      <p>A strong economics reading identifies scarcity, names opportunity costs, predicts market responses with appropriate uncertainty, and asks what prices and models leave out. AI can help organize scenarios, but human judgment must test assumptions, evidence, and distributional consequences.</p>
+
+      <h2>Your Optional Notes</h2>
+      <p><strong>Pricing recommendation:</strong> <span id="print-recommendation">No pricing path selected</span></p>
+      <p><strong>Reflection:</strong> <span id="print-reflection">No reflection note entered</span></p>
+
+      <h2>Practice Results</h2>
+      <ol class="print-results" id="print-results"></ol>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const activity = document.getElementById("ecn-activity");
+      const allTabs = Array.from(activity.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(activity.querySelectorAll('[role="tabpanel"]'));
+
+      function visibleTabs() {
+        return allTabs.filter(tab => !tab.hidden);
+      }
+
+      function activateTab(tab, moveFocus) {
+        if (!tab || tab.hidden) return;
+        allTabs.forEach(item => {
+          const selected = item === tab;
+          item.setAttribute("aria-selected", selected ? "true" : "false");
+          item.tabIndex = selected ? 0 : -1;
+        });
+        panels.forEach(panel => {
+          panel.hidden = panel.id !== tab.getAttribute("aria-controls");
+        });
+        if (moveFocus) tab.focus();
+      }
+
+      allTabs.forEach(tab => {
+        tab.addEventListener("click", () => activateTab(tab, false));
+        tab.addEventListener("keydown", event => {
+          const tabs = visibleTabs();
+          const index = tabs.indexOf(tab);
+          let nextIndex = null;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+          if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = tabs.length - 1;
+          if (nextIndex !== null) {
+            event.preventDefault();
+            activateTab(tabs[nextIndex], true);
+          }
+        });
+      });
+
+      const scenarioData = {
+        baseline: {
+          supplyShift: 0,
+          demandShift: 0,
+          summary: "<strong>Baseline:</strong> Supply and demand meet at an illustrative equilibrium price and quantity."
+        },
+        rain: {
+          supplyShift: -70,
+          demandShift: 0,
+          summary: "<strong>Heavy rain:</strong> Supply shifts left. Equilibrium price tends to rise and equilibrium quantity tends to fall."
+        },
+        interest: {
+          supplyShift: 0,
+          demandShift: 70,
+          summary: "<strong>Customer interest:</strong> Demand shifts right. Equilibrium price and quantity tend to rise."
+        }
+      };
+
+      const bothVariantData = {
+        supplyLarger: {
+          supplyShift: -70,
+          demandShift: 30,
+          summary: "<strong>Both shocks, supply change larger:</strong> Price rises and quantity falls in this illustration."
+        },
+        equal: {
+          supplyShift: -50,
+          demandShift: 50,
+          summary: "<strong>Both shocks, equal-sized shifts:</strong> Price rises and quantity happens to remain unchanged in this illustration."
+        },
+        demandLarger: {
+          supplyShift: -30,
+          demandShift: 70,
+          summary: "<strong>Both shocks, demand change larger:</strong> Price rises and quantity rises in this illustration. Together, the three comparisons show why quantity cannot be predicted until Maya knows the relative shift sizes."
+        }
+      };
+
+      const supplyLine = document.getElementById("supply-line");
+      const demandLine = document.getElementById("demand-line");
+      const supplyLabel = document.getElementById("supply-label");
+      const demandLabel = document.getElementById("demand-label");
+      const equilibriumPoint = document.getElementById("equilibrium-point");
+      const marketSummary = document.getElementById("market-summary");
+      const scenarioButtons = Array.from(activity.querySelectorAll(".scenario-button"));
+      const bothShockControls = document.getElementById("both-shock-controls");
+      const bothSizeButtons = Array.from(activity.querySelectorAll(".both-size-button"));
+      let activeBothVariant = "equal";
+
+      function shiftedLine(line, horizontalShift) {
+        return {
+          x1: Number(line.dataset.baseX1) + horizontalShift,
+          y1: Number(line.getAttribute("y1")),
+          x2: Number(line.dataset.baseX2) + horizontalShift,
+          y2: Number(line.getAttribute("y2"))
+        };
+      }
+
+      function positionLine(line, coordinates) {
+        line.setAttribute("x1", String(coordinates.x1));
+        line.setAttribute("x2", String(coordinates.x2));
+      }
+
+      function lineIntersection(first, second) {
+        const denominator = (first.x1 - first.x2) * (second.y1 - second.y2)
+          - (first.y1 - first.y2) * (second.x1 - second.x2);
+        const firstCross = first.x1 * first.y2 - first.y1 * first.x2;
+        const secondCross = second.x1 * second.y2 - second.y1 * second.x2;
+        return {
+          x: (firstCross * (second.x1 - second.x2) - (first.x1 - first.x2) * secondCross) / denominator,
+          y: (firstCross * (second.y1 - second.y2) - (first.y1 - first.y2) * secondCross) / denominator
+        };
+      }
+
+      function showScenario(name) {
+        const scenario = name === "both" ? bothVariantData[activeBothVariant] : scenarioData[name];
+        const shiftedSupply = shiftedLine(supplyLine, scenario.supplyShift);
+        const shiftedDemand = shiftedLine(demandLine, scenario.demandShift);
+        const point = lineIntersection(shiftedSupply, shiftedDemand);
+        positionLine(supplyLine, shiftedSupply);
+        positionLine(demandLine, shiftedDemand);
+        supplyLabel.setAttribute("x", String(Math.max(430, Math.min(520, 500 + scenario.supplyShift))));
+        demandLabel.setAttribute("x", String(Math.max(470, Math.min(530, 480 + scenario.demandShift))));
+        equilibriumPoint.setAttribute("cx", String(point.x));
+        equilibriumPoint.setAttribute("cy", String(point.y));
+        marketSummary.innerHTML = scenario.summary;
+        scenarioButtons.forEach(button => {
+          button.setAttribute("aria-pressed", button.dataset.scenario === name ? "true" : "false");
+        });
+        bothShockControls.hidden = name !== "both";
+        bothSizeButtons.forEach(button => {
+          button.setAttribute("aria-pressed", button.dataset.bothVariant === activeBothVariant ? "true" : "false");
+        });
+      }
+
+      scenarioButtons.forEach(button => {
+        button.addEventListener("click", () => showScenario(button.dataset.scenario));
+      });
+
+      bothSizeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+          activeBothVariant = button.dataset.bothVariant;
+          showScenario("both");
+        });
+      });
+
+      let scormAPI = null;
+      let scormInitialized = false;
+      let scoreSubmitted = false;
+
+      function findAPI(startWindow) {
+        let current = startWindow;
+        let attempts = 0;
+        while (current && attempts < 8) {
+          try {
+            if (current.API) return current.API;
+            if (current.parent === current) break;
+            current = current.parent;
+          } catch (error) {
+            break;
+          }
+          attempts += 1;
+        }
+        return null;
+      }
+
+      function scormInit() {
+        scormAPI = findAPI(window) || (window.opener ? findAPI(window.opener) : null);
+        if (!scormAPI) return false;
+        const initialized = scormAPI.LMSInitialize("");
+        scormInitialized = initialized === true || initialized === "true";
+        if (!scormInitialized) return false;
+        const status = scormAPI.LMSGetValue("cmi.core.lesson_status");
+        if (!status || status === "not attempted") {
+          scormAPI.LMSSetValue("cmi.core.lesson_status", "incomplete");
+          scormAPI.LMSCommit("");
+        }
+        return true;
+      }
+
+      function submitToCanvas(score) {
+        if (!scormInitialized || !scormAPI) {
+          return { sent: false, message: `Local preview: your score is ${score} out of 100, but no Canvas SCORM connection was found.` };
+        }
+        scormAPI.LMSSetValue("cmi.core.score.min", "0");
+        scormAPI.LMSSetValue("cmi.core.score.max", "100");
+        scormAPI.LMSSetValue("cmi.core.score.raw", String(score));
+        scormAPI.LMSSetValue("cmi.core.lesson_status", "completed");
+        const committed = scormAPI.LMSCommit("");
+        const sent = committed === true || committed === "true";
+        return sent
+          ? { sent: true, message: `Score submitted to Canvas: ${score} out of 100.` }
+          : { sent: false, message: `Canvas did not confirm the submission. Your current score is ${score} out of 100; please try again.` };
+      }
+
+      window.addEventListener("load", scormInit);
+      window.addEventListener("beforeunload", () => {
+        if (scormInitialized && scormAPI) scormAPI.LMSFinish("");
+      });
+
+      const feedbackMessages = {
+        scarcity: {
+          correct: "Scarcity means limited resources relative to wants. Copper Cup faces limits across the product, the business, employees, and customers.",
+          incorrect: "Scarcity does not require a product to disappear. It exists whenever limited resources force choices among competing uses."
+        },
+        opportunity: {
+          correct: "Keeping the price low uses scarce cash. The margin and alternative uses of that cash are part of what Copper Cup gives up.",
+          incorrect: "Opportunity cost is the next-best alternative given up. The rain is a condition, not an alternative Copper Cup could have chosen."
+        },
+        supply: {
+          correct: "A smaller qualifying harvest and higher bean cost reduce the featured lattes Copper Cup can profitably offer at each menu price, so retail supply shifts left.",
+          incorrect: "This event changes Copper Cup's input availability and cost, not customer willingness to buy. In the featured-latte market, retail supply shifts left."
+        },
+        demand: {
+          correct: "Greater customer interest increases the featured lattes customers want at each menu price, so retail demand shifts right.",
+          incorrect: "The post changes customer preferences. That is a demand shifter, and stronger interest shifts demand right."
+        },
+        price: {
+          correct: "A supply decrease and a demand increase both push equilibrium price upward.",
+          incorrect: "The two shifts reinforce one another on price. Neither produces downward pressure in this scenario."
+        },
+        quantity: {
+          correct: "Supply pushes quantity down while demand pushes it up. The relative shift sizes determine the final direction.",
+          incorrect: "Each shift pulls quantity in a different direction. One effect cannot be assumed to dominate without additional evidence."
+        },
+        shortage: {
+          correct: "At the original $5.45 price, stronger demand and reduced supply can create excess demand. That shortage creates upward price pressure.",
+          incorrect: "The market cannot adjust instantly through a new harvest. At the original $5.45 price, quantity demanded may exceed quantity supplied."
+        },
+        externality: {
+          correct: "An externality affects a third party whose costs or benefits are not fully represented in the transaction price.",
+          incorrect: "A normal purchase or a contracted premium is part of the transaction. The externality is the effect borne outside it."
+        },
+        data: {
+          correct: "The combined evidence distinguishes product, firm, local-market, and macroeconomic signals and supports a more careful forecast.",
+          incorrect: "One measure cannot separate a coffee-specific change from broader economic conditions. Maya needs multiple relevant sources."
+        },
+        ai: {
+          correct: "The AI correctly notices price pressure but overclaims quantity and turns a conditional model into an unsupported pricing command.",
+          incorrect: "The central problem is analytical, not stylistic. The output hides uncertainty and skips the evidence needed for a business decision."
+        }
+      };
+
+      const form = document.getElementById("practice-form");
+      const formError = document.getElementById("form-error");
+      const practiceFeedback = document.getElementById("practice-feedback");
+      const scoreLine = document.getElementById("score-line");
+      const feedbackList = document.getElementById("feedback-list");
+      const questionCards = Array.from(form.querySelectorAll(".question-card"));
+      const decisionKeys = questionCards.map(card => card.dataset.question);
+      const completionMessage = document.getElementById("completion-message");
+      const reviewSubmitButton = document.getElementById("review-submit");
+      const finalScore = document.getElementById("final-score");
+      const submitTab = document.getElementById("tab-submit");
+      const submissionStatus = document.getElementById("submission-status");
+      const submitButton = document.getElementById("submit-score");
+      const checkButton = document.getElementById("check-practice");
+      const resetButton = document.getElementById("reset-practice");
+      let practiceChecked = false;
+      let currentScore = 0;
+
+      function selectedRadio(name) {
+        return form.querySelector(`input[name="${name}"]:checked`);
+      }
+
+      function missingFields() {
+        return decisionKeys
+          .map((name, index) => selectedRadio(name) ? null : `decision ${index + 1}`)
+          .filter(Boolean);
+      }
+
+      function decisionResults() {
+        return questionCards.map(card => {
+          const selected = selectedRadio(card.dataset.question);
+          return {
+            name: card.dataset.question,
+            title: card.querySelector("h3").textContent.replace(/^\d+\.\s*/, ""),
+            correct: Boolean(selected && selected.value === card.dataset.correct)
+          };
+        });
+      }
+
+      function updateOptionalSummary() {
+        const recommendation = document.getElementById("pricing-recommendation").value || "No pricing path selected.";
+        const reflection = document.getElementById("reflection-note").value.trim() || "No reflection note entered.";
+        document.getElementById("selected-recommendation").textContent = recommendation;
+        document.getElementById("reflection-summary").textContent = reflection;
+      }
+
+      function invalidatePractice() {
+        if (!practiceChecked || scoreSubmitted) return;
+        practiceChecked = false;
+        currentScore = 0;
+        practiceFeedback.hidden = true;
+        feedbackList.replaceChildren();
+        reviewSubmitButton.disabled = true;
+        submitTab.hidden = true;
+        finalScore.textContent = "0/100";
+        completionMessage.textContent = "Complete all 10 objective checks to activate the Canvas review and submission step.";
+        submissionStatus.textContent = "Score not yet submitted.";
+        submissionStatus.className = "submission-status";
+        if (submitTab.getAttribute("aria-selected") === "true") {
+          activateTab(document.getElementById("tab-practice"), false);
+        }
+      }
+
+      const objectiveControls = Array.from(form.querySelectorAll('.question-card input[type="radio"]'));
+      objectiveControls.forEach(control => control.addEventListener("change", invalidatePractice));
+
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+        const missing = missingFields();
+        if (missing.length) {
+          formError.textContent = `Please complete: ${missing.join(", ")}.`;
+          formError.hidden = false;
+          formError.focus();
+          return;
+        }
+
+        formError.hidden = true;
+        feedbackList.replaceChildren();
+        const decisions = decisionResults();
+        currentScore = decisions.filter(result => result.correct).length * 10;
+        practiceChecked = true;
+
+        decisions.forEach(result => {
+          const paragraph = document.createElement("p");
+          paragraph.innerHTML = `<strong>${result.title}:</strong> ${feedbackMessages[result.name][result.correct ? "correct" : "incorrect"]}`;
+          feedbackList.appendChild(paragraph);
+        });
+
+        scoreLine.innerHTML = `<strong>Practice score: ${currentScore} out of 100.</strong> This score has not been submitted to Canvas.`;
+        finalScore.textContent = `${currentScore}/100`;
+        practiceFeedback.hidden = false;
+        reviewSubmitButton.disabled = false;
+        submitTab.hidden = false;
+        completionMessage.innerHTML = `All 10 objective checks are complete. Your current score is <strong><span id="practice-score">${currentScore}</span> out of 100</strong>. Review your results before completing the required Canvas submission step.`;
+        updateOptionalSummary();
+        practiceFeedback.focus();
+      });
+
+      reviewSubmitButton.addEventListener("click", () => {
+        if (!practiceChecked) return;
+        updateOptionalSummary();
+        activateTab(submitTab, true);
+        document.getElementById("panel-submit").scrollIntoView({ block: "start" });
+      });
+
+      submitButton.addEventListener("click", () => {
+        if (!practiceChecked) return;
+        const result = submitToCanvas(currentScore);
+        submissionStatus.textContent = result.message;
+        submissionStatus.className = `submission-status${result.sent ? " success" : ""}`;
+        scoreSubmitted = result.sent;
+        if (result.sent) {
+          submitButton.disabled = true;
+          submitButton.textContent = "Score Submitted to Canvas";
+          objectiveControls.forEach(control => { control.disabled = true; });
+          checkButton.disabled = true;
+          resetButton.disabled = true;
+        }
+      });
+
+      resetButton.addEventListener("click", () => {
+        form.reset();
+        practiceChecked = false;
+        currentScore = 0;
+        formError.hidden = true;
+        practiceFeedback.hidden = true;
+        feedbackList.replaceChildren();
+        reviewSubmitButton.disabled = true;
+        submitTab.hidden = true;
+        finalScore.textContent = "0/100";
+        completionMessage.textContent = "Complete all 10 objective checks to activate the Canvas review and submission step.";
+        submissionStatus.textContent = "Score not yet submitted.";
+        submissionStatus.className = "submission-status";
+        updateOptionalSummary();
+      });
+
+      function preparePrintTakeaway() {
+        const recommendation = document.getElementById("pricing-recommendation").value || "No pricing path selected";
+        const reflection = document.getElementById("reflection-note").value.trim() || "No reflection note entered";
+        document.getElementById("print-score").textContent = `${currentScore} out of 100`;
+        document.getElementById("print-checked").textContent = practiceChecked ? "10 of 10" : "0 of 10";
+        document.getElementById("print-submission").textContent = scoreSubmitted ? "Confirmed" : "Not confirmed";
+        document.getElementById("print-recommendation").textContent = recommendation;
+        document.getElementById("print-reflection").textContent = reflection;
+
+        const results = document.getElementById("print-results");
+        results.replaceChildren();
+
+        decisionResults().forEach((result, index) => {
+          const item = document.createElement("li");
+          item.textContent = `${result.title}: ${practiceChecked ? (result.correct ? "Correct" : "Review recommended") : "Not checked"}`;
+          results.appendChild(item);
+        });
+      }
+
+      document.getElementById("print-takeaway-button").addEventListener("click", () => {
+        preparePrintTakeaway();
+        window.print();
+      });
+
+      window.addEventListener("beforeprint", preparePrintTakeaway);
+
+      showScenario("baseline");
+    }());
+  </script>
+</body>
+</html>
