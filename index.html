@@ -157,6 +157,8 @@
 
     #ecn-activity button,
     #ecn-activity input[type="radio"],
+    #ecn-activity input[type="checkbox"],
+    #ecn-activity input[type="number"],
     #ecn-activity select,
     #ecn-activity textarea {
       scroll-margin: 90px;
@@ -368,6 +370,7 @@
 
     #ecn-activity .scenario-button,
     #ecn-activity .both-size-button,
+    #ecn-activity .pricing-button,
     #ecn-activity .secondary-button {
       min-height: 44px;
       margin: 0;
@@ -381,10 +384,72 @@
     }
 
     #ecn-activity .scenario-button[aria-pressed="true"],
-    #ecn-activity .both-size-button[aria-pressed="true"] {
+    #ecn-activity .both-size-button[aria-pressed="true"],
+    #ecn-activity .pricing-button[aria-pressed="true"] {
       border-color: var(--asu-maroon);
       background: var(--asu-maroon);
       color: var(--asu-white);
+    }
+
+    #ecn-activity .pricing-explorer {
+      margin: 20px 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--asu-gray-7);
+    }
+
+    #ecn-activity .pricing-explorer > h3 {
+      margin-top: 0;
+    }
+
+    #ecn-activity .pricing-output {
+      margin-top: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-left: 7px solid var(--asu-gold);
+      border-radius: 6px;
+      background: var(--asu-white);
+    }
+
+    #ecn-activity .pricing-output h4 {
+      color: var(--asu-maroon);
+      font-size: 1.2rem;
+    }
+
+    #ecn-activity .pricing-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    #ecn-activity .pricing-metrics div {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    #ecn-activity .pricing-metrics div:nth-child(odd) {
+      border-right: 1px solid var(--line);
+    }
+
+    #ecn-activity .pricing-metrics dt {
+      margin-bottom: 3px;
+      color: var(--asu-gray-2);
+      font-weight: 700;
+    }
+
+    #ecn-activity .pricing-metrics dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    #ecn-activity .pricing-analysis {
+      padding-top: 4px;
+    }
+
+    #ecn-activity .pricing-analysis p:last-child {
+      margin-bottom: 0;
     }
 
     #ecn-activity .both-shock-controls {
@@ -549,6 +614,56 @@
       accent-color: var(--asu-maroon);
     }
 
+    #ecn-activity .match-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    #ecn-activity .match-row {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.25fr) minmax(210px, .75fr);
+      gap: 14px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--asu-gray-7);
+    }
+
+    #ecn-activity .match-row p {
+      margin: 0;
+    }
+
+    #ecn-activity .match-row label {
+      display: block;
+    }
+
+    #ecn-activity .match-row select {
+      margin-top: 4px;
+    }
+
+    #ecn-activity .number-response {
+      max-width: 260px;
+      margin-top: 12px;
+    }
+
+    #ecn-activity input[type="number"] {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px;
+      border: 2px solid var(--asu-gray);
+      border-radius: 6px;
+      background: var(--asu-white);
+      color: var(--asu-black);
+    }
+
+    #ecn-activity .interaction-note {
+      margin: 10px 0 0;
+      color: var(--asu-gray-2);
+      font-size: .95rem;
+    }
+
     #ecn-activity .primary-button,
     #ecn-activity .submit-button {
       min-height: 44px;
@@ -709,6 +824,19 @@
         display: block;
       }
 
+      #ecn-activity .pricing-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      #ecn-activity .pricing-metrics div:nth-child(odd) {
+        border-right: 0;
+      }
+
+      #ecn-activity .match-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
       #ecn-activity .market-chart .chart-label,
       #ecn-activity .market-chart .chart-line-label {
         font-size: 21px;
@@ -732,6 +860,7 @@
 
       #ecn-activity .scenario-button,
       #ecn-activity .both-size-button,
+      #ecn-activity .pricing-button,
       #ecn-activity .primary-button,
       #ecn-activity .secondary-button,
       #ecn-activity .submit-button {
@@ -832,10 +961,10 @@
     <main id="ecn-main">
       <section class="activity-intro" aria-labelledby="activity-heading">
         <h2 id="activity-heading">How This Chapter Works</h2>
-        <p>Read the case tabs, explore the market model, and then complete all 10 practice checks. Each check provides immediate feedback and can be revised before submission.</p>
+        <p>Read the case tabs, explore the market model and economic signals, and then complete all 10 practice checks. The checks use several response formats, provide explanatory feedback, and can be revised before submission.</p>
         <div class="scoring-note">
           <strong>Canvas scoring:</strong>
-          <span>Your score is based on 10 objective decisions worth 10 points each. Your pricing recommendation and reflection note are optional and are not scored. After all checks are complete, use the required final button to submit your score to Canvas.</span>
+          <span>Your score is based on 10 objective checks worth 10 points each. Your pricing recommendation and reflection note are optional and are not scored. After all checks are complete, use the required final button to submit your score to Canvas.</span>
         </div>
       </section>
 
@@ -884,6 +1013,8 @@
         <p>At the original planned price of $5.45, the new market conditions may create a shortage: customers want more Story of the Bean lattes than Copper Cup can profitably provide. That shortage creates upward price pressure. A higher price gives customers a reason to reconsider how much they buy and gives Copper Cup an incentive to offer more when possible. But adjustment takes time. A new coffee harvest cannot appear simply because today's menu price increased.</p>
         <p>The model is useful because it strips the situation down to a few relationships. It is also limited. It does not decide what Copper Cup should value, whether a price is fair, or who should bear the cost of climate and market risk. Those questions require evidence and judgment.</p>
         <p>Maya notices another complication. A market price can coordinate buyers and sellers, but it may not include every cost. If soil damage, carbon emissions, unstable farmer income, or community impacts fall on people who are not part of the transaction, economists call those third-party effects externalities. Markets can also work differently when buyers have market power, when information is incomplete, or when public policy changes incentives.</p>
+        <p>Copper Cup also operates within a larger economic system. Capitalism emphasizes private ownership and market exchange. Socialism gives social or public ownership and coordination a larger role and may combine planning with markets. Communism describes a theoretical system of common ownership and a classless society; governments identified with communism have generally relied heavily on state ownership and central planning. The United States is better described as a mixed economy because private markets operate alongside public programs, regulation, taxation, and government-provided services.</p>
+        <p>Conditions beyond this one market matter too. Gross domestic product, or GDP, measures the value of final goods and services produced within a country during a period. Productivity compares output with the inputs used to produce it. The business cycle describes broad expansions and contractions in economic activity. Fiscal policy changes government spending or taxes, while monetary policy uses central-bank tools to influence interest rates, credit, and overall economic conditions.</p>
         <p>Economics therefore gives Copper Cup more than a reason to raise prices. It gives the company a disciplined way to identify tradeoffs, predict likely responses, examine assumptions, and ask who benefits, who pays, and what the market price leaves out.</p>
       </article>
 
@@ -986,6 +1117,47 @@
           <p>Maya learns that economists do not study only prices. They use models, data, forecasting, and careful communication to understand choices made by households, businesses, and governments.</p>
         </div>
 
+        <h3 class="artifact-heading">Artifact: Economy-to-Cafe Signal Brief</h3>
+        <p>This fictional planning brief shows how Maya could connect macroeconomic information to Copper Cup without treating a broad indicator as a precise forecast for one cafe.</p>
+        <div class="table-wrap" role="region" aria-label="Illustrative economy-to-cafe signal brief" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Illustrative Signal</th>
+                <th scope="col">Economic Reading</th>
+                <th scope="col">Question for Copper Cup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Real GDP is still growing, but its growth rate has slowed for two quarters.</td>
+                <td>The economy may be expanding more slowly; this alone does not establish a recession.</td>
+                <td>Are local sales and customer traffic also weakening?</td>
+              </tr>
+              <tr>
+                <td>Unemployment rises modestly and household budgets tighten.</td>
+                <td>Income uncertainty may make some customers more price sensitive.</td>
+                <td>Would a lower-price way to try the coffee preserve access?</td>
+              </tr>
+              <tr>
+                <td>A revised workflow raises lattes produced per employee hour without reducing quality.</td>
+                <td>Labor productivity has increased.</td>
+                <td>Does the improvement reduce pressure without overloading employees?</td>
+              </tr>
+              <tr>
+                <td>The Federal Reserve raises its target interest rate.</td>
+                <td>This is monetary policy and can make borrowing more expensive.</td>
+                <td>Should Copper Cup delay debt-financed equipment?</td>
+              </tr>
+              <tr>
+                <td>Congress changes business taxes or increases public spending.</td>
+                <td>This is fiscal policy and can affect income, costs, and aggregate demand.</td>
+                <td>Which effects are relevant to the cafe, its workers, and its customers?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <ul class="research-list reading-width">
           <li><strong>Prices, Inflation, and Labor:</strong> Bart Hobijn's work connects price setting, inflation, labor markets, and macroeconomic data. Copper Cup should distinguish a product-specific coffee shock from broader inflation affecting wages, rent, shipping, and student budgets.</li>
           <li><strong>Incentives and Work:</strong> Alexander Bick's research examines how policies and incentives affect decisions about work. Copper Cup can ask how wages, schedules, taxes, and the cost of living influence both employees and customers.</li>
@@ -993,6 +1165,16 @@
           <li><strong>Trade and Development:</strong> Wyatt Brooks connects international trade with economic development. Coffee moves through global trade, but the benefits and risks of that trade may be distributed differently across producers, intermediaries, businesses, and consumers.</li>
           <li><strong>Externalities and Social Costs:</strong> Alejandro Manelli and Kelly Bishop emphasize third-party effects and environmental questions. A market price may omit costs borne by communities, workers, or the environment.</li>
           <li><strong>Human Capital and Opportunity:</strong> Esteban Aucejo studies education, skills, and labor-market outcomes. Maya sees that economics can connect individual investments in knowledge with later choices, productivity, wages, and opportunity.</li>
+        </ul>
+
+        <h3 class="artifact-heading">Economics at W. P. Carey</h3>
+        <ul class="research-list reading-width">
+          <li><strong>Purpose and public value:</strong> Economics contributes to ASU's commitments to inclusion, student success, public-value research, and community well-being. Through analytical education, impactful research, and engagement with business, government, and communities, the discipline also supports W. P. Carey's mission to spark positive change in business and society.</li>
+          <li><strong>Degree pathways:</strong> ASU students can study economics through a Bachelor of Science in W. P. Carey or through The College of Liberal Arts and Sciences. Related Politics and the Economy options connect economic reasoning with public institutions and policy.</li>
+          <li><strong>Foundational skills:</strong> Economics students build analytical problem solving, economic modeling, quantitative analysis, econometrics, forecasting, and written and oral communication. These tools help them test claims rather than rely on intuition alone.</li>
+          <li><strong>Careers and experience:</strong> Economics graduates work in roles such as analyst, consultant, manager, planner, economist, and statistician across business, government, nonprofit, finance, policy, and research settings. Internships, advising, tutoring, and career resources help students explore those paths.</li>
+          <li><strong>Student and alumni perspective:</strong> Department resources portray Economics as an analytical, quantitative, and flexible course of study. Alumni examples connect that preparation to varied roles, while research training, internships, advising, and tutoring show ways students can shape their learning experience.</li>
+          <li><strong>Ways to become involved:</strong> Students can pursue undergraduate research training, research-focused career preparation, internships with an economics component, department events, advising, tutoring, and the department's professional community.</li>
         </ul>
 
         <h3 class="artifact-heading">Artifact: Maya's Economist's Toolkit</h3>
@@ -1040,7 +1222,7 @@
           <p>AI could summarize market updates, compare indicators, or generate possible scenarios. Maya still has to identify whether the data describe Copper Cup, the local market, or the broader economy; check the source and date; and reject conclusions that are more precise than the evidence allows.</p>
         </div>
         <div class="callout reading-width">
-          <p><strong>Explore the major:</strong> Visit the <a href="https://wpcarey.asu.edu/economics-degrees/undergraduate" target="_blank" rel="noopener">undergraduate economics program</a> to compare ASU economics pathways, degree experiences, and next steps.</p>
+          <p><strong>Explore Economics:</strong> Compare the <a href="https://wpcarey.asu.edu/economics-degrees/undergraduate" target="_blank" rel="noopener">undergraduate pathways</a>, review <a href="https://wpcarey.asu.edu/economics-degrees/careers" target="_blank" rel="noopener">careers and internships</a>, and examine the <a href="https://wpcarey.asu.edu/economics-degrees/research-training" target="_blank" rel="noopener">undergraduate research training program</a>.</p>
         </div>
       </article>
 
@@ -1102,29 +1284,46 @@
         </div>
         <p><strong>Planning note:</strong> These are decision estimates, not guaranteed outcomes. Maya will compare them with actual sales, stockouts, and customer responses during the pilot.</p>
 
-        <div class="option-grid">
-          <section class="option-card">
-            <h3>Option A: Raise the Featured Price</h3>
-            <p><strong>Offer:</strong> Raise the latte from $5.45 to $5.95 and offer up to 60 per day.</p>
-            <p><strong>Business upside:</strong> Restores the estimated $2.85 contribution margin per latte.</p>
-            <p><strong>Business risk:</strong> Customer response at $5.95 is unknown, and some customers may buy less or feel excluded.</p>
-            <p><strong>Social question:</strong> Who is left out when responsibility is built into a premium price?</p>
-          </section>
-          <section class="option-card">
-            <h3>Option B: Keep the Price Unchanged</h3>
-            <p><strong>Offer:</strong> Keep the latte at $5.45 and offer up to 60 per day.</p>
-            <p><strong>Business upside:</strong> Protects affordability and customer goodwill.</p>
-            <p><strong>Business risk:</strong> Margin falls to an estimated $2.35 per latte, and demand may exceed the daily supply.</p>
-            <p><strong>Social question:</strong> If customers do not pay the added cost, who does?</p>
-          </section>
-          <section class="option-card">
-            <h3>Option C: Use Tiered Access</h3>
-            <p><strong>Offer:</strong> Allocate the limited beans to as many as 45 lattes at $5.95 and 15 small drip coffees at $3.25 per day.</p>
-            <p><strong>Business upside:</strong> Preserves a lower-price way to experience the cooperative coffee.</p>
-            <p><strong>Business risk:</strong> Adds batch, inventory, and communication complexity while reducing margin on the lower-price servings.</p>
-            <p><strong>Social question:</strong> Can Copper Cup widen access without hiding the product's true cost?</p>
-          </section>
-        </div>
+        <section class="pricing-explorer" aria-labelledby="pricing-explorer-heading">
+          <h3 id="pricing-explorer-heading">Explore the Pricing Paths</h3>
+          <p>Select each option to compare its economics, access implications, and unanswered questions. Exploring an option does not record a recommendation or affect your score.</p>
+          <div class="scenario-buttons" aria-label="Pricing paths">
+            <button class="pricing-button" type="button" data-pricing="raise" aria-pressed="true">Raise to $5.95</button>
+            <button class="pricing-button" type="button" data-pricing="hold" aria-pressed="false">Hold at $5.45</button>
+            <button class="pricing-button" type="button" data-pricing="tiered" aria-pressed="false">Use Tiered Access</button>
+          </div>
+
+          <div class="pricing-output" id="pricing-output" role="region" aria-labelledby="pricing-title">
+            <h4 id="pricing-title">Option A: Raise the Featured Price</h4>
+            <p id="pricing-offer">Offer up to 60 featured lattes per day at $5.95 each.</p>
+            <dl class="pricing-metrics">
+              <div>
+                <dt>Price offer</dt>
+                <dd id="pricing-price">$5.95 featured latte</dd>
+              </div>
+              <div>
+                <dt>Daily availability</dt>
+                <dd id="pricing-volume">Up to 60 lattes</dd>
+              </div>
+              <div>
+                <dt>Unit contribution</dt>
+                <dd id="pricing-unit">$2.85 per latte</dd>
+              </div>
+              <div>
+                <dt>Estimated daily contribution</dt>
+                <dd id="pricing-daily">Up to $171.00 if all 60 sell</dd>
+              </div>
+            </dl>
+            <div class="pricing-analysis">
+              <p><strong>Likely market response:</strong> <span id="pricing-market">The higher price may reduce quantity demanded, but demand at $5.95 has not been tested.</span></p>
+              <p><strong>Access and risk:</strong> <span id="pricing-access">Copper Cup restores its original unit contribution, while price-sensitive customers may buy less or feel excluded.</span></p>
+              <p><strong>Evidence still needed:</strong> <span id="pricing-evidence">Estimate customer demand at $5.95 and compare actual sales, stockouts, and substitutions during the pilot.</span></p>
+              <p><strong>Question to consider:</strong> <span id="pricing-question">Who is left out when the added sourcing cost is carried through a higher customer price?</span></p>
+            </div>
+          </div>
+          <p class="visually-hidden" id="pricing-status" role="status" aria-live="polite"></p>
+          <p class="interaction-note"><strong>Calculation note:</strong> Daily contribution equals selling price minus estimated variable cost, multiplied by units sold. It is not profit because fixed costs are not subtracted.</p>
+        </section>
 
         <div class="ai-note reading-width">
           <h3>AI at Work: Comparing Price Options</h3>
@@ -1139,111 +1338,333 @@
 
       <article class="tab-panel" id="panel-practice" role="tabpanel" tabindex="0" aria-labelledby="tab-practice" hidden>
         <h2>Interactive Practice</h2>
-        <p>Complete all 10 case decisions, then select <strong>Check My Economics Reading</strong>. You may revise and check again before submitting to Canvas.</p>
+        <p>Complete all 10 objective checks, then select <strong>Check My Economics Reading</strong>. Use each prompt's matching, calculation, or select-all directions. You may revise and check again before submitting to Canvas.</p>
 
         <form id="practice-form" novalidate>
-          <section class="question-card" data-question="scarcity" data-correct="limited">
-            <h3>1. Identify Scarcity</h3>
-            <fieldset>
-              <legend>Which statement best describes scarcity in Copper Cup's situation?</legend>
-              <label class="choice-row"><input type="radio" name="scarcity" value="gone"> Coffee is scarce only when the cooperative has no beans left to sell.</label>
-              <label class="choice-row"><input type="radio" name="scarcity" value="limited"> Coffee, cash, production capacity, staff attention, and customer budgets are all limited.</label>
-              <label class="choice-row"><input type="radio" name="scarcity" value="price"> Scarcity means regulations require Copper Cup to raise every featured-drink price.</label>
-            </fieldset>
+          <section class="question-card" data-question="scarcity">
+            <h3>1. Classify Scarcity and Opportunity Cost</h3>
+            <p>Match each case detail to the economic idea it demonstrates most directly.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>The cooperative has fewer qualifying beans than buyers would like.</p>
+                <label for="scarcity-resource">Classification
+                  <select id="scarcity-resource" data-correct="scarce">
+                    <option value="">Choose one</option>
+                    <option value="scarce">Scarce resource</option>
+                    <option value="opportunity">Opportunity cost</option>
+                    <option value="neither">Neither by itself</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Keeping the latte at $5.45 means giving up margin and other possible uses of that cash.</p>
+                <label for="scarcity-opportunity">Classification
+                  <select id="scarcity-opportunity" data-correct="opportunity">
+                    <option value="">Choose one</option>
+                    <option value="scarce">Scarce resource</option>
+                    <option value="opportunity">Opportunity cost</option>
+                    <option value="neither">Neither by itself</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>The original menu lists a $5.45 price.</p>
+                <label for="scarcity-neither">Classification
+                  <select id="scarcity-neither" data-correct="neither">
+                    <option value="">Choose one</option>
+                    <option value="scarce">Scarce resource</option>
+                    <option value="opportunity">Opportunity cost</option>
+                    <option value="neither">Neither by itself</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="opportunity" data-correct="margin">
-            <h3>2. Find the Opportunity Cost</h3>
-            <fieldset>
-              <legend>If Copper Cup keeps the featured price unchanged, what is the clearest opportunity cost?</legend>
-              <label class="choice-row"><input type="radio" name="opportunity" value="none"> There is no opportunity cost because customers continue paying the original menu price.</label>
-              <label class="choice-row"><input type="radio" name="opportunity" value="rain"> The opportunity cost is the harvest loss caused by heavy rain at origin.</label>
-              <label class="choice-row"><input type="radio" name="opportunity" value="margin"> Copper Cup gives up margin and other possible uses of the cash it spends.</label>
-            </fieldset>
+          <section class="question-card" data-question="market">
+            <h3>2. Match Events to Market Shifts</h3>
+            <p>Identify the primary shift in Copper Cup's featured-latte market.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>Heavy rain reduces the qualifying harvest and raises bean cost.</p>
+                <label for="market-rain">Market shift
+                  <select id="market-rain" data-correct="supply-left">
+                    <option value="">Choose one</option>
+                    <option value="supply-left">Supply shifts left</option>
+                    <option value="supply-right">Supply shifts right</option>
+                    <option value="demand-left">Demand shifts left</option>
+                    <option value="demand-right">Demand shifts right</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>A local creator increases interest in traceable coffee.</p>
+                <label for="market-interest">Market shift
+                  <select id="market-interest" data-correct="demand-right">
+                    <option value="">Choose one</option>
+                    <option value="supply-left">Supply shifts left</option>
+                    <option value="supply-right">Supply shifts right</option>
+                    <option value="demand-left">Demand shifts left</option>
+                    <option value="demand-right">Demand shifts right</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>A nearby cafe introduces a close substitute at a lower price.</p>
+                <label for="market-substitute">Market shift
+                  <select id="market-substitute" data-correct="demand-left">
+                    <option value="">Choose one</option>
+                    <option value="supply-left">Supply shifts left</option>
+                    <option value="supply-right">Supply shifts right</option>
+                    <option value="demand-left">Demand shifts left</option>
+                    <option value="demand-right">Demand shifts right</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>A new workflow lowers the cost of preparing each featured latte.</p>
+                <label for="market-workflow">Market shift
+                  <select id="market-workflow" data-correct="supply-right">
+                    <option value="">Choose one</option>
+                    <option value="supply-left">Supply shifts left</option>
+                    <option value="supply-right">Supply shifts right</option>
+                    <option value="demand-left">Demand shifts left</option>
+                    <option value="demand-right">Demand shifts right</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="supply" data-correct="left">
-            <h3>3. Read the Supply Shock</h3>
-            <fieldset>
-              <legend>Heavy rain reduces the cooperative's qualifying harvest. What happens in the model?</legend>
-              <label class="choice-row"><input type="radio" name="supply" value="left"> Supply shifts left.</label>
-              <label class="choice-row"><input type="radio" name="supply" value="right"> Supply shifts right.</label>
-              <label class="choice-row"><input type="radio" name="supply" value="demand"> Demand shifts left.</label>
-            </fieldset>
+          <section class="question-card" data-question="graph">
+            <h3>3. Interpret Both Market Shocks</h3>
+            <p>Use the graph comparison to complete both predictions when supply shifts left and demand shifts right.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>Direction of equilibrium price</p>
+                <label for="graph-price">Prediction
+                  <select id="graph-price" data-correct="rise">
+                    <option value="">Choose one</option>
+                    <option value="fall">Falls</option>
+                    <option value="rise">Rises</option>
+                    <option value="uncertain">Cannot be determined</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Direction of equilibrium quantity</p>
+                <label for="graph-quantity">Prediction
+                  <select id="graph-quantity" data-correct="uncertain">
+                    <option value="">Choose one</option>
+                    <option value="fall">Must fall</option>
+                    <option value="rise">Must rise</option>
+                    <option value="uncertain">Depends on the relative shift sizes</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="demand" data-correct="right">
-            <h3>4. Read the Demand Shock</h3>
-            <fieldset>
-              <legend>A local creator increases customer interest in traceable coffee. What happens in the model?</legend>
-              <label class="choice-row"><input type="radio" name="demand" value="supply"> Supply shifts right.</label>
-              <label class="choice-row"><input type="radio" name="demand" value="left"> Demand shifts left.</label>
-              <label class="choice-row"><input type="radio" name="demand" value="right"> Demand shifts right.</label>
-            </fieldset>
+          <section class="question-card" data-question="shortage">
+            <h3>4. Calculate a Shortage</h3>
+            <p>Suppose that at the unchanged $5.45 price, customers demand 75 featured lattes while Copper Cup can supply 60. Enter the size of the shortage.</p>
+            <div class="number-response">
+              <label for="shortage-size">Shortage in lattes
+                <input id="shortage-size" type="number" min="0" step="1" inputmode="numeric" data-correct="15">
+              </label>
+            </div>
           </section>
 
-          <section class="question-card" data-question="price" data-correct="up">
-            <h3>5. Predict Price Pressure</h3>
-            <fieldset>
-              <legend>When supply shifts left and demand shifts right, what is the most defensible price prediction?</legend>
-              <label class="choice-row"><input type="radio" name="price" value="down"> The equilibrium price will fall because customers face a smaller available supply.</label>
-              <label class="choice-row"><input type="radio" name="price" value="up"> Both market shifts create upward pressure on the equilibrium price.</label>
-              <label class="choice-row"><input type="radio" name="price" value="same"> The equilibrium price will remain unchanged because the two shifts cancel.</label>
-            </fieldset>
+          <section class="question-card" data-question="systems">
+            <h3>5. Compare Economic Systems</h3>
+            <p>Match each description to the best introductory economic-system label.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>Private ownership and market exchange play the primary coordinating role.</p>
+                <label for="system-capitalism">System
+                  <select id="system-capitalism" data-correct="capitalism">
+                    <option value="">Choose one</option>
+                    <option value="capitalism">Capitalism</option>
+                    <option value="socialism">Socialism</option>
+                    <option value="communism">Communism</option>
+                    <option value="mixed">Mixed economy</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Social or public ownership and coordination play a larger role and may operate alongside markets.</p>
+                <label for="system-socialism">System
+                  <select id="system-socialism" data-correct="socialism">
+                    <option value="">Choose one</option>
+                    <option value="capitalism">Capitalism</option>
+                    <option value="socialism">Socialism</option>
+                    <option value="communism">Communism</option>
+                    <option value="mixed">Mixed economy</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>The theoretical goal is common ownership and a classless society; historical governments using this label generally relied on central planning.</p>
+                <label for="system-communism">System
+                  <select id="system-communism" data-correct="communism">
+                    <option value="">Choose one</option>
+                    <option value="capitalism">Capitalism</option>
+                    <option value="socialism">Socialism</option>
+                    <option value="communism">Communism</option>
+                    <option value="mixed">Mixed economy</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Private markets coexist with regulation, taxation, public services, and some public ownership.</p>
+                <label for="system-mixed">System
+                  <select id="system-mixed" data-correct="mixed">
+                    <option value="">Choose one</option>
+                    <option value="capitalism">Capitalism</option>
+                    <option value="socialism">Socialism</option>
+                    <option value="communism">Communism</option>
+                    <option value="mixed">Mixed economy</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="quantity" data-correct="uncertain">
-            <h3>6. Predict Quantity</h3>
-            <fieldset>
-              <legend>What can Maya conclude about equilibrium quantity when both shifts occur?</legend>
-              <label class="choice-row"><input type="radio" name="quantity" value="rise"> Quantity must rise because stronger customer demand determines the final market outcome.</label>
-              <label class="choice-row"><input type="radio" name="quantity" value="fall"> Quantity must fall because the smaller coffee supply determines the final market outcome.</label>
-              <label class="choice-row"><input type="radio" name="quantity" value="uncertain"> Quantity remains uncertain until Maya knows the relative size of both shifts.</label>
-            </fieldset>
+          <section class="question-card" data-question="macro">
+            <h3>6. Read Macroeconomic Signals</h3>
+            <p>Interpret two signals from Maya's economy-to-cafe brief.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>Real GDP continues to grow, but more slowly, while unemployment rises.</p>
+                <label for="macro-cycle">Best interpretation
+                  <select id="macro-cycle" data-correct="slowing">
+                    <option value="">Choose one</option>
+                    <option value="recession-certain">A recession is certain</option>
+                    <option value="slowing">Economic activity may be slowing</option>
+                    <option value="productivity">Productivity must be rising</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Copper Cup produces more lattes per employee hour without reducing quality.</p>
+                <label for="macro-productivity">Best interpretation
+                  <select id="macro-productivity" data-correct="productivity-rise">
+                    <option value="">Choose one</option>
+                    <option value="gdp-rise">National GDP necessarily increased</option>
+                    <option value="productivity-rise">Labor productivity increased</option>
+                    <option value="unemployment-rise">Unemployment increased</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="shortage" data-correct="pressure">
-            <h3>7. Explain the Shortage</h3>
-            <fieldset>
-              <legend>If Copper Cup holds the original planned price of $5.45 after the shocks, what is most likely?</legend>
-              <label class="choice-row"><input type="radio" name="shortage" value="pressure"> A shortage may form, placing upward pressure on the featured coffee price.</label>
-              <label class="choice-row"><input type="radio" name="shortage" value="surplus"> A surplus may form, placing downward pressure on the featured coffee price.</label>
-              <label class="choice-row"><input type="radio" name="shortage" value="instant"> The cooperative will immediately increase its harvest enough to satisfy customer demand.</label>
-            </fieldset>
+          <section class="question-card" data-question="policy">
+            <h3>7. Sort Fiscal and Monetary Policy</h3>
+            <p>Classify each action by the decision-maker and tool involved.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>Congress changes taxes or government spending.</p>
+                <label for="policy-fiscal">Policy type
+                  <select id="policy-fiscal" data-correct="fiscal">
+                    <option value="">Choose one</option>
+                    <option value="fiscal">Fiscal policy</option>
+                    <option value="monetary">Monetary policy</option>
+                    <option value="business">Business decision</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>The Federal Reserve changes its target interest rate.</p>
+                <label for="policy-monetary">Policy type
+                  <select id="policy-monetary" data-correct="monetary">
+                    <option value="">Choose one</option>
+                    <option value="fiscal">Fiscal policy</option>
+                    <option value="monetary">Monetary policy</option>
+                    <option value="business">Business decision</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Copper Cup changes the price of its featured latte.</p>
+                <label for="policy-business">Policy type
+                  <select id="policy-business" data-correct="business">
+                    <option value="">Choose one</option>
+                    <option value="fiscal">Fiscal policy</option>
+                    <option value="monetary">Monetary policy</option>
+                    <option value="business">Business decision</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="externality" data-correct="thirdparty">
-            <h3>8. Recognize an Externality</h3>
+          <section class="question-card" data-question="externality">
+            <h3>8. Identify Externalities</h3>
             <fieldset>
-              <legend>Which example best represents an externality?</legend>
-              <label class="choice-row"><input type="radio" name="externality" value="receipt"> A customer pays the listed price and receives the drink they ordered.</label>
-              <label class="choice-row"><input type="radio" name="externality" value="thirdparty"> Environmental damage affects a community without being fully included in the transaction price.</label>
-              <label class="choice-row"><input type="radio" name="externality" value="premium"> Copper Cup pays the cooperative premium stated in its purchasing agreement.</label>
+              <legend>Select every example in which a third party bears a cost not fully included in the transaction price.</legend>
+              <label class="choice-row"><input type="checkbox" data-correct="true"> Processing runoff harms a downstream community, but the damage is not reflected in the coffee price.</label>
+              <label class="choice-row"><input type="checkbox" data-correct="false"> A customer pays the posted price and receives the latte they ordered.</label>
+              <label class="choice-row"><input type="checkbox" data-correct="true"> Shipping emissions impose health or climate costs on people outside the purchase.</label>
+              <label class="choice-row"><input type="checkbox" data-correct="false"> Copper Cup pays the premium specified in its purchasing agreement.</label>
             </fieldset>
+            <p class="interaction-note">Select all that apply.</p>
           </section>
 
-          <section class="question-card" data-question="data" data-correct="combined">
-            <h3>9. Choose Useful Economic Information</h3>
-            <fieldset>
-              <legend>Which evidence set best helps Maya separate a coffee-specific shock from the broader economy?</legend>
-              <label class="choice-row"><input type="radio" name="data" value="sales"> Copper Cup's total sales and its average transaction price for the launch.</label>
-              <label class="choice-row"><input type="radio" name="data" value="social"> One social media post and the number of likes it receives.</label>
-              <label class="choice-row"><input type="radio" name="data" value="combined"> Cooperative supply, local costs and sales, inflation, labor conditions, and customer budgets.</label>
-            </fieldset>
+          <section class="question-card" data-question="pathways">
+            <h3>9. Connect Economics to Study and Careers</h3>
+            <p>Match each student goal to the most relevant Economics opportunity.</p>
+            <div class="match-list">
+              <div class="match-row">
+                <p>Build economic models and quantitative analysis skills for business or policy questions.</p>
+                <label for="pathways-degree">Best match
+                  <select id="pathways-degree" data-correct="degree">
+                    <option value="">Choose one</option>
+                    <option value="degree">Economics degree pathway</option>
+                    <option value="research">Undergraduate research training</option>
+                    <option value="career">Career and internship resources</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Learn causal inference, design an experiment, and contribute to an original research project.</p>
+                <label for="pathways-research">Best match
+                  <select id="pathways-research" data-correct="research">
+                    <option value="">Choose one</option>
+                    <option value="degree">Economics degree pathway</option>
+                    <option value="research">Undergraduate research training</option>
+                    <option value="career">Career and internship resources</option>
+                  </select>
+                </label>
+              </div>
+              <div class="match-row">
+                <p>Explore analyst careers, internships, employers, and professional preparation.</p>
+                <label for="pathways-career">Best match
+                  <select id="pathways-career" data-correct="career">
+                    <option value="">Choose one</option>
+                    <option value="degree">Economics degree pathway</option>
+                    <option value="research">Undergraduate research training</option>
+                    <option value="career">Career and internship resources</option>
+                  </select>
+                </label>
+              </div>
+            </div>
           </section>
 
-          <section class="question-card" data-question="ai" data-correct="uncertainty">
+          <section class="question-card" data-question="ai">
             <h3>10. Audit an AI Forecast</h3>
             <p>Maya receives this AI-generated conclusion:</p>
             <div class="ai-note">
               <p>“Because demand increased and supply decreased, both the equilibrium price and quantity will definitely increase. Copper Cup should raise every menu price immediately.”</p>
             </div>
             <fieldset>
-              <legend>What is the strongest critique?</legend>
-              <label class="choice-row"><input type="radio" name="ai" value="uncertainty"> The conclusion overstates quantity certainty and recommends action without enough business evidence.</label>
-              <label class="choice-row"><input type="radio" name="ai" value="tone"> The conclusion uses a tone that is too formal for Copper Cup's customers.</label>
-              <label class="choice-row"><input type="radio" name="ai" value="accept"> The conclusion is reliable because it incorporates changes in both market curves.</label>
+              <legend>Select every problem with the AI conclusion.</legend>
+              <label class="choice-row"><input type="checkbox" data-correct="true"> It claims quantity will definitely increase even though the two shifts pull quantity in different directions.</label>
+              <label class="choice-row"><input type="checkbox" data-correct="true"> It recommends changing every menu price when the evidence concerns one featured drink.</label>
+              <label class="choice-row"><input type="checkbox" data-correct="false"> It recognizes that both shifts create upward pressure on the featured latte's equilibrium price.</label>
+              <label class="choice-row"><input type="checkbox" data-correct="true"> It does not identify the data, assumptions, or uncertainty behind its recommendation.</label>
             </fieldset>
+            <p class="interaction-note">Select all that apply.</p>
           </section>
 
           <div class="optional-box">
@@ -1293,7 +1714,7 @@
           </div>
           <div class="summary-item">
             <strong>10/10</strong>
-            Decisions checked
+            Objective checks completed
           </div>
           <div class="summary-item">
             <strong>Unscored</strong>
@@ -1303,7 +1724,7 @@
 
         <div class="callout reading-width">
           <h3>Economics Takeaway</h3>
-          <p>A strong economics reading identifies scarcity, names opportunity costs, predicts market responses with appropriate uncertainty, and asks what prices and models leave out. AI can help organize scenarios, but human judgment must test assumptions, evidence, and distributional consequences.</p>
+          <p>A strong economics reading connects scarce choices and market shifts with economic systems, macroeconomic signals, policy, and external effects. AI can help organize scenarios, but human judgment must test assumptions, evidence, and uncertainty.</p>
           <p><strong>Your pricing recommendation:</strong> <span id="selected-recommendation">No pricing path selected.</span></p>
           <p><strong>Your reflection:</strong> <span id="reflection-summary">No reflection note entered.</span></p>
         </div>
@@ -1323,12 +1744,12 @@
 
       <div class="print-summary">
         <div><strong id="print-score">0 out of 100</strong>Objective score</div>
-        <div><strong id="print-checked">0 of 10</strong>Decisions checked</div>
+        <div><strong id="print-checked">0 of 10</strong>Objective checks completed</div>
         <div><strong id="print-submission">Not confirmed</strong>Canvas submission</div>
       </div>
 
       <h2>Key Takeaway</h2>
-      <p>A strong economics reading identifies scarcity, names opportunity costs, predicts market responses with appropriate uncertainty, and asks what prices and models leave out. AI can help organize scenarios, but human judgment must test assumptions, evidence, and distributional consequences.</p>
+      <p>A strong economics reading connects scarce choices and market shifts with economic systems, macroeconomic signals, policy, and external effects. AI can help organize scenarios, but human judgment must test assumptions, evidence, and uncertainty.</p>
 
       <h2>Your Optional Notes</h2>
       <p><strong>Pricing recommendation:</strong> <span id="print-recommendation">No pricing path selected</span></p>
@@ -1485,6 +1906,75 @@
         });
       });
 
+      const pricingData = {
+        raise: {
+          title: "Option A: Raise the Featured Price",
+          offer: "Offer up to 60 featured lattes per day at $5.95 each.",
+          price: "$5.95 featured latte",
+          volume: "Up to 60 lattes",
+          unit: "$2.85 per latte",
+          daily: "Up to $171.00 if all 60 sell",
+          market: "The higher price may reduce quantity demanded, but demand at $5.95 has not been tested.",
+          access: "Copper Cup restores its original unit contribution, while price-sensitive customers may buy less or feel excluded.",
+          evidence: "Estimate customer demand at $5.95 and compare actual sales, stockouts, and substitutions during the pilot.",
+          question: "Who is left out when the added sourcing cost is carried through a higher customer price?"
+        },
+        hold: {
+          title: "Option B: Keep the Price Unchanged",
+          offer: "Offer up to 60 featured lattes per day at the original $5.45 price.",
+          price: "$5.45 featured latte",
+          volume: "Up to 60 lattes",
+          unit: "$2.35 per latte",
+          daily: "Up to $141.00 if all 60 sell",
+          market: "Estimated demand of 70 to 80 lattes may exceed the 60-latte supply by 10 to 20 per day.",
+          access: "The listed price remains lower, but stockouts may ration access by arrival time while Copper Cup absorbs more of the added cost.",
+          evidence: "Track sellout time, unmet demand, substitutions, customer response, and whether the lower unit contribution is sustainable.",
+          question: "If customers do not pay the added sourcing cost, which business priorities or stakeholders absorb it?"
+        },
+        tiered: {
+          title: "Option C: Use Tiered Access",
+          offer: "Offer up to 45 featured lattes at $5.95 and 15 small drip coffees at $3.25 per day.",
+          price: "$5.95 latte and $3.25 small drip",
+          volume: "Up to 45 lattes and 15 drips",
+          unit: "Latte: $2.85; drip: $0.90",
+          daily: "$141.75 if all 60 servings sell",
+          market: "Two formats create different price points, but Copper Cup does not yet know how customers will divide between them.",
+          access: "A lower-price entry point may widen access, while batching, inventory, and communication become more complex.",
+          evidence: "Test demand for each format, monitor waste and stockouts, and verify that the serving mix is operationally workable.",
+          question: "Can Copper Cup widen access without hiding the product's cost or creating an unmanageable service process?"
+        }
+      };
+
+      const pricingButtons = Array.from(activity.querySelectorAll(".pricing-button"));
+      const pricingFields = {
+        title: document.getElementById("pricing-title"),
+        offer: document.getElementById("pricing-offer"),
+        price: document.getElementById("pricing-price"),
+        volume: document.getElementById("pricing-volume"),
+        unit: document.getElementById("pricing-unit"),
+        daily: document.getElementById("pricing-daily"),
+        market: document.getElementById("pricing-market"),
+        access: document.getElementById("pricing-access"),
+        evidence: document.getElementById("pricing-evidence"),
+        question: document.getElementById("pricing-question")
+      };
+
+      function showPricing(name) {
+        const option = pricingData[name];
+        if (!option) return;
+        Object.keys(pricingFields).forEach(key => {
+          pricingFields[key].textContent = option[key];
+        });
+        pricingButtons.forEach(button => {
+          button.setAttribute("aria-pressed", button.dataset.pricing === name ? "true" : "false");
+        });
+        document.getElementById("pricing-status").textContent = `${option.title} details displayed.`;
+      }
+
+      pricingButtons.forEach(button => {
+        button.addEventListener("click", () => showPricing(button.dataset.pricing));
+      });
+
       let scormAPI = null;
       let scormInitialized = false;
       let scoreSubmitted = false;
@@ -1541,44 +2031,44 @@
 
       const feedbackMessages = {
         scarcity: {
-          correct: "Scarcity means limited resources relative to wants. Copper Cup faces limits across the product, the business, employees, and customers.",
-          incorrect: "Scarcity does not require a product to disappear. It exists whenever limited resources force choices among competing uses."
+          correct: "The qualifying beans are a scarce resource, the forgone margin and alternative uses of cash are opportunity costs, and a posted price is neither concept by itself.",
+          incorrect: "Scarcity describes a limited resource relative to wants. Opportunity cost is the next-best alternative given up; a price alone does not identify either concept."
         },
-        opportunity: {
-          correct: "Keeping the price low uses scarce cash. The margin and alternative uses of that cash are part of what Copper Cup gives up.",
-          incorrect: "Opportunity cost is the next-best alternative given up. The rain is a condition, not an alternative Copper Cup could have chosen."
+        market: {
+          correct: "You separated changes in sellers' costs and capacity from changes in customers' willingness to buy. Rain shifts supply left, interest shifts demand right, a cheaper substitute shifts demand left, and lower preparation cost shifts supply right.",
+          incorrect: "Ask whether the event first changes Copper Cup's willingness and ability to sell or customers' willingness and ability to buy, then determine whether that amount rises or falls at each price."
         },
-        supply: {
-          correct: "A smaller qualifying harvest and higher bean cost reduce the featured lattes Copper Cup can profitably offer at each menu price, so retail supply shifts left.",
-          incorrect: "This event changes Copper Cup's input availability and cost, not customer willingness to buy. In the featured-latte market, retail supply shifts left."
-        },
-        demand: {
-          correct: "Greater customer interest increases the featured lattes customers want at each menu price, so retail demand shifts right.",
-          incorrect: "The post changes customer preferences. That is a demand shifter, and stronger interest shifts demand right."
-        },
-        price: {
-          correct: "A supply decrease and a demand increase both push equilibrium price upward.",
-          incorrect: "The two shifts reinforce one another on price. Neither produces downward pressure in this scenario."
-        },
-        quantity: {
-          correct: "Supply pushes quantity down while demand pushes it up. The relative shift sizes determine the final direction.",
-          incorrect: "Each shift pulls quantity in a different direction. One effect cannot be assumed to dominate without additional evidence."
+        graph: {
+          correct: "The supply decrease and demand increase both push equilibrium price upward, but they pull equilibrium quantity in opposite directions. Quantity depends on the relative shift sizes.",
+          incorrect: "Both shifts reinforce upward price pressure. For quantity, the supply shift pushes down and the demand shift pushes up, so direction alone is not enough."
         },
         shortage: {
-          correct: "At the original $5.45 price, stronger demand and reduced supply can create excess demand. That shortage creates upward price pressure.",
-          incorrect: "The market cannot adjust instantly through a new harvest. At the original $5.45 price, quantity demanded may exceed quantity supplied."
+          correct: "The shortage is 15 lattes: quantity demanded of 75 minus quantity supplied of 60.",
+          incorrect: "A shortage equals quantity demanded minus quantity supplied at the stated price. Here, calculate 75 minus 60."
+        },
+        systems: {
+          correct: "The labels distinguish market-centered capitalism, socialism's larger social or public role, communism's common-ownership ideal and historical central planning, and the public-private combination in a mixed economy.",
+          incorrect: "Focus on who owns productive resources and how decisions are coordinated. Real economies are more complex, but those features distinguish the introductory labels."
+        },
+        macro: {
+          correct: "Slower real GDP growth with rising unemployment can signal slowing activity without proving a recession. More output per employee hour is an increase in labor productivity.",
+          incorrect: "GDP describes economy-wide production, while productivity compares output with inputs. One slowing indicator does not establish a recession by itself."
+        },
+        policy: {
+          correct: "Taxes and government spending are fiscal tools; Federal Reserve interest-rate decisions are monetary tools; Copper Cup's menu price is a business decision.",
+          incorrect: "Classify the decision-maker first: elected government uses taxes and spending, the central bank uses monetary tools, and a cafe controls its own menu decisions."
         },
         externality: {
-          correct: "An externality affects a third party whose costs or benefits are not fully represented in the transaction price.",
-          incorrect: "A normal purchase or a contracted premium is part of the transaction. The externality is the effect borne outside it."
+          correct: "Runoff and emissions can impose costs on people outside the purchase when those costs are not included in the price. The latte exchange and contracted premium remain inside the transaction.",
+          incorrect: "Select effects borne by third parties outside the transaction. A normal purchase and a negotiated premium are direct parts of the exchange."
         },
-        data: {
-          correct: "The combined evidence distinguishes product, firm, local-market, and macroeconomic signals and supports a more careful forecast.",
-          incorrect: "One measure cannot separate a coffee-specific change from broader economic conditions. Maya needs multiple relevant sources."
+        pathways: {
+          correct: "The degree builds broad analytical foundations, research training develops original inquiry, and career resources connect those skills to internships and professional roles.",
+          incorrect: "Match the scope of the goal: a degree provides the broad curriculum, research training develops inquiry, and career resources support internships and employment exploration."
         },
         ai: {
-          correct: "The AI correctly notices price pressure but overclaims quantity and turns a conditional model into an unsupported pricing command.",
-          incorrect: "The central problem is analytical, not stylistic. The output hides uncertainty and skips the evidence needed for a business decision."
+          correct: "The AI notices valid upward price pressure, but it overstates quantity, overgeneralizes from one product to the full menu, and hides its evidence and assumptions.",
+          incorrect: "Separate the valid claim from the unsupported ones. Price pressure is defensible; certain quantity, menu-wide action, and an evidence-free recommendation are not."
         }
       };
 
@@ -1588,7 +2078,6 @@
       const scoreLine = document.getElementById("score-line");
       const feedbackList = document.getElementById("feedback-list");
       const questionCards = Array.from(form.querySelectorAll(".question-card"));
-      const decisionKeys = questionCards.map(card => card.dataset.question);
       const completionMessage = document.getElementById("completion-message");
       const reviewSubmitButton = document.getElementById("review-submit");
       const finalScore = document.getElementById("final-score");
@@ -1600,25 +2089,41 @@
       let practiceChecked = false;
       let currentScore = 0;
 
-      function selectedRadio(name) {
-        return form.querySelector(`input[name="${name}"]:checked`);
+      function cardTitle(card) {
+        return card.querySelector("h3").textContent.replace(/^\d+\.\s*/, "");
+      }
+
+      function cardComplete(card) {
+        const selects = Array.from(card.querySelectorAll("select[data-correct]"));
+        const numbers = Array.from(card.querySelectorAll('input[type="number"][data-correct]'));
+        const checkboxes = Array.from(card.querySelectorAll('input[type="checkbox"][data-correct]'));
+        const selectsComplete = selects.every(control => control.value !== "");
+        const numbersComplete = numbers.every(control => control.value.trim() !== "");
+        const checkboxesComplete = checkboxes.length === 0 || checkboxes.some(control => control.checked);
+        return selectsComplete && numbersComplete && checkboxesComplete;
+      }
+
+      function cardCorrect(card) {
+        const selects = Array.from(card.querySelectorAll("select[data-correct]"));
+        const numbers = Array.from(card.querySelectorAll('input[type="number"][data-correct]'));
+        const checkboxes = Array.from(card.querySelectorAll('input[type="checkbox"][data-correct]'));
+        return selects.every(control => control.value === control.dataset.correct)
+          && numbers.every(control => Number(control.value) === Number(control.dataset.correct))
+          && checkboxes.every(control => control.checked === (control.dataset.correct === "true"));
       }
 
       function missingFields() {
-        return decisionKeys
-          .map((name, index) => selectedRadio(name) ? null : `decision ${index + 1}`)
-          .filter(Boolean);
+        return questionCards
+          .filter(card => !cardComplete(card))
+          .map(card => cardTitle(card));
       }
 
       function decisionResults() {
-        return questionCards.map(card => {
-          const selected = selectedRadio(card.dataset.question);
-          return {
-            name: card.dataset.question,
-            title: card.querySelector("h3").textContent.replace(/^\d+\.\s*/, ""),
-            correct: Boolean(selected && selected.value === card.dataset.correct)
-          };
-        });
+        return questionCards.map(card => ({
+          name: card.dataset.question,
+          title: cardTitle(card),
+          correct: cardCorrect(card)
+        }));
       }
 
       function updateOptionalSummary() {
@@ -1645,7 +2150,7 @@
         }
       }
 
-      const objectiveControls = Array.from(form.querySelectorAll('.question-card input[type="radio"]'));
+      const objectiveControls = Array.from(form.querySelectorAll(".question-card input, .question-card select"));
       objectiveControls.forEach(control => control.addEventListener("change", invalidatePractice));
 
       form.addEventListener("submit", event => {
@@ -1745,6 +2250,7 @@
       window.addEventListener("beforeprint", preparePrintTakeaway);
 
       showScenario("baseline");
+      showPricing("raise");
     }());
   </script>
 </body>
